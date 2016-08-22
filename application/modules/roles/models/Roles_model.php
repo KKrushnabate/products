@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class User_model extends CI_Model {
+class Roles_model extends CI_Model {
 
 	function __construct(){
 		// Call the Model constructor

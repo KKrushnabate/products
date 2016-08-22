@@ -4,15 +4,15 @@ class User extends MX_Controller {
 
 	function __construct() {
 	    parent::__construct();
-
+                $this->load->helper('form');
 		$this->load->module('header/header');
 		$this->load->module('footer/footer');
-		$this->load->model('vendor/Staff_model');
+		$this->load->model('user/user_model');
 		$this->load->model('helper/helper_model');
 	}
-
-	
-
+        public function  index(){
+            $this->userMaster();
+        }
 	public function userMaster()
 	{
 		$this->header->index();
@@ -21,8 +21,7 @@ class User extends MX_Controller {
 	} 
 	public function adduser()
 	{	
-		
-		
+				
 		 $vendor_name = isset($_POST['vendor_name']) ? $_POST['vendor_name'] : "";
 		 $vendor_mobile_number = isset($_POST['vendor_contact_number']) ? $_POST['vendor_contact_number'] : "";
 		 $vendor_phone_number = isset($_POST['vendor_phone_number']) ? $_POST['vendor_phone_number'] : "";
@@ -56,7 +55,7 @@ class User extends MX_Controller {
 			'added_by' => '1',
 			'added_on' => date('Y-m-d h:i:s')
 		);
- 	$vendor_table =  VENDOR_TABLE;
+ 	$vendor_table =  ADMIN_USER;
 
  	$this->db->trans_begin();
  	 //driver record insertion
