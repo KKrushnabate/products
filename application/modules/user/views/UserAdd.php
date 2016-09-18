@@ -55,44 +55,22 @@
                                     echo form_hidden($data);
                                         
                                     $data = array(
-                                        'name'          => 'user_first_name',
-                                        'id'            => 'user_first_name',
-                                        'value'         => (!empty($user_first_name)) ? $user_first_name: '',
+                                        'name'          => 'fullname',
+                                        'id'            => 'fullname',
+                                        'value'         => (!empty($fullname)) ? $fullname: '',
                                         'maxlength'     => '45',
-                                        "placeholder"   => "Enter First Name",
+                                        "placeholder"   => "Enter full name",
                                         "class"         => "col-xs-10 col-sm-5 mandatory-field"
                                         );
 
                                         echo form_input($data);
                                     ?>
                                         <span class="help-inline col-xs-12 col-sm-7">
-                                                <span class="middle input-text-error" id="user_first_name_errorlabel"></span>
+                                                <span class="middle input-text-error" id="user_fullname_errorlabel"></span>
                                         </span>
                                 </div>
                             </div>
                                         
-                            <div class="form-group">
-                                    <label class="col-sm-2 no-padding-right" for=""> User Last Name *</label>
-
-                                    <div class="col-sm-9">
-                                        <?php
-                                            $data = array(
-                                                'name'          => 'user_last_name',
-                                                'id'            => 'user_last_name',
-                                                'value'         => (!empty($user_last_name)) ? $user_last_name: '',
-                                                'maxlength'     => '45',
-                                                "placeholder"   => "Enter Last Name",
-                                                "class"         => "col-xs-10 col-sm-5 mandatory-field"
-                                            );
-
-                                        echo form_input($data);
-                                        ?>
-                                        <span class="help-inline col-xs-12 col-sm-7">
-                                                <span class="middle input-text-error" id="user_last_name_errorlabel"></span>
-                                        </span>
-                                    </div>
-                            </div>
-                        
                             <div class="form-group">
                                     <label class="col-sm-2 no-padding-right" for=""> User Name *</label>
 
@@ -148,7 +126,7 @@
                                                 'id'            => 'repeat_password',
                                                 'value'         => (!empty($repeat_password)) ? $repeat_password: '',
                                                 'maxlength'     => '45',
-                                                "placeholder"   => "Enter Password",
+                                                "placeholder"   => "Enter Repeat Password",
                                                 "class"         => "col-xs-10 col-sm-5 mandatory-field"
                                             );
 
@@ -162,9 +140,16 @@
                         
                             <div class="form-group">
                                     <label class="col-sm-2 no-padding-right" for="form-field-2"> User Email Id*</label>
-
                                     <div class="col-sm-9">
                                         <?php
+                                            $data = array(
+                                                'name'          => 'approved_by_admin',
+                                                'id'            => 'approved_by_admin',
+                                                'value'         => '1',
+                                                );
+
+                                            echo form_hidden($data);
+                                        
                                             $data = array(
                                                 'name'          => 'user_email_id',
                                                 'id'            => 'user_email_id',
@@ -180,6 +165,7 @@
                                                 <span class="middle input-text-error" id="user_email_id_errorlabel"></span>
                                         </span>
                                 </div>
+                                    
                             </div>
                         
                             <div class="form-group">
@@ -204,52 +190,7 @@
                                         </span>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                    <label class="col-sm-2 no-padding-right" for="form-field-2"> User Contact Number*</label>
-
-                                    <div class="col-sm-9">
-                                        <?php
-                                            $data = array(
-                                                'name'          => 'contact_number',
-                                                'id'            => 'contact_number',
-                                                'value'         => (!empty($contact_number)) ? $contact_number : '',
-                                                'maxlength'     => '45',
-                                                "placeholder"   => "Enter contact number",
-                                                "onKeyUp"       => "javascript:return check_isnumeric(event,this,0);",
-                                                "class"         => "col-xs-10 col-sm-5 mandatory-field"
-                                            );
-
-                                            echo form_input($data);
-                                        ?>
-                                        <span class="help-inline col-xs-12 col-sm-7">
-                                                <span class="middle input-text-error" id="contact_number_errorlabel"></span>
-                                        </span>
-                                </div>
-                            </div>
                             
-                            <div class="form-group">
-                                    <label class="col-sm-2 no-padding-right" for="form-field-2"> User Contact Number*</label>
-
-                                    <div class="col-sm-9">
-                                        <?php
-                                            $data = array(
-                                                'name'          => 'contact_number',
-                                                'id'            => 'contact_number',
-                                                'value'         => (!empty($contact_number)) ? $contact_number : '',
-                                                'maxlength'     => '45',
-                                                "placeholder"   => "Enter contact number",
-                                                "onKeyUp"       => "javascript:return check_isnumeric(event,this,0);",
-                                                "class"         => "col-xs-10 col-sm-5 mandatory-field"
-                                            );
-
-                                            echo form_input($data);
-                                        ?>
-                                        <span class="help-inline col-xs-12 col-sm-7">
-                                                <span class="middle input-text-error" id="contact_number_errorlabel"></span>
-                                        </span>
-                                </div>
-                            </div>
-                        
                             <div class="clearfix form-actions">
                                     <div class="col-md-offset-3 col-md-9">
                                             <button class="btn btn-info test" type="submit">

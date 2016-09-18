@@ -1,9 +1,10 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class User extends MX_Controller {
-
+        private $view_data = array();
 	function __construct() {
 	    parent::__construct();
+                $this->view_data['company_details'] = $this->config->item('company_details');
                 $this->load->helper('form');
 		$this->load->module('header/header');
 		$this->load->module('footer/footer');
@@ -18,7 +19,15 @@ class User extends MX_Controller {
 		$this->header->index();
 		$this->load->view('UserAdd');
 		$this->footer->index();
+	}
+	
+	public function login()
+	{
+            
+            $this->load->view('login',$this->view_data);
 	} 
+	
+	 
 	public function adduser()
 	{	
 				
