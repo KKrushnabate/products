@@ -424,11 +424,10 @@ $(document).ready(function () {
                 if ($.trim(obj_mand.eq(index).val()) == "" || $.trim(obj_mand.eq(index).val()) == "0") 
                 {
                     fields_nf = obj_mand.eq(index).attr("id");
-                    
                     var data = $('#'+fields_nf).val();
 
                     
-                    $("#" + fields_nf+"_errorlabel").html("Please enter"+msg_re.toLowerCase());
+                    $("#" + fields_nf+"_errorlabel").html("Please enter "+msg_re.toLowerCase());
                     error = 'true';
                     
                     $("#" + fields_nf_focus).focus();
@@ -453,6 +452,7 @@ $(document).ready(function () {
             //alert(error);
             if (error == false) {
                 event.preventDefault();
+                var postData = $("#"+formId).serializeArray();
                 ajaxCall(formId, postData, method, sucessCallBack, failCallBack, timeout);
             }
         }
@@ -552,7 +552,7 @@ function ajaxCall(id, postData, method, sucessCallBack, failCallBack, timeout) {
     var obj = array.filter(function(obj){
         return obj.name === id
     })[0];
-
+	
     var uri = obj['value'];
 
     $.ajax({
@@ -565,9 +565,10 @@ function ajaxCall(id, postData, method, sucessCallBack, failCallBack, timeout) {
             $('.icon'+id).addClass('ace-icon fa fa-spinner fa-spin orange bigger-125');
         },
         success: function (data) {
-            console.log(data.success);
+            console.log(data);
             if(data.success == true) {
-            $('.icon'+id).removeClass('ace-icon fa fa-spinner fa-spin orange bigger-125');
+                location.href = obj['redirect'];
+            /*$('.icon'+id).removeClass('ace-icon fa fa-spinner fa-spin orange bigger-125');
             $('.alert-box').html('<div class="alert alert-block alert-success">\
                     <button type="button" class="close" data-dismiss="alert">\
                         <i class="ace-icon fa fa-times"></i>\
@@ -578,7 +579,7 @@ function ajaxCall(id, postData, method, sucessCallBack, failCallBack, timeout) {
                         </strong>\
                     </p>\
                 </div>');
-                $("#"+id)[0].reset();
+                $("#"+id)[0].reset();*/
             } else {
                 $('.icon'+id).removeClass('ace-icon fa fa-spinner fa-spin orange bigger-125');
                 $('.alert-box').html('<div class="alert alert-block alert-danger">\
@@ -594,7 +595,7 @@ function ajaxCall(id, postData, method, sucessCallBack, failCallBack, timeout) {
             }
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            console.log(thrownError);
+            console.log(xhr, ajaxOptions+"<br>"+ thrownError);
         }
     });
 }

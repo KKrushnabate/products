@@ -1,6 +1,6 @@
 var baseUrl = $('#baseUrl').val();
 var array = [
-	{name: "vehiclecategory", value: baseUrl + "vehicle/categorySubmit"},
+	{name: "form_login", value: baseUrl + "/user/login_process",redirect:baseUrl + "/dashboard/index"},
 	{name: "vehicle", value: baseUrl + "vehicle/vehicleSubmit"},
 	{name: "vehicleList", value: baseUrl + "vehicle/vehicleDelete"},
 	{name: "vehicle_update", value: baseUrl + "vehicle/vehicleUpdate"},
