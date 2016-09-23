@@ -50,7 +50,10 @@ class Helper_model extends CI_Model {
 		$this->db->from($tableName);
 		$this->db->where($where);
 		$query = $this->db->get();
-		return $query->row();
+		$arrFinal_data = array();
+		$arrFinal_data['total_rows'] = $query->num_rows();
+		$arrFinal_data['table_data'] = $query->row();
+		return $arrFinal_data;
 	}
 
 	public function selectAll($select,$tableName)

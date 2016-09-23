@@ -23,13 +23,47 @@ class User extends MX_Controller {
 	
 	public function login()
 	{
-            
             $this->load->view('login',$this->view_data);
 	} 
 	
+        public function login_process(){
+            $this->load->library('form_validation');
+            $this->form_validation->set_rules('username', 'Username', 'trim|required');
+            $this->form_validation->set_rules('password', 'Password', 'trim|required');
+            
+            if ($this->form_validation->run() == FALSE) {
+                //$this->form_validation->get_all_errors()
+                $data['error_messages'] = validation_errors();
+                $data['success'] = false;
+            } else {
+                $username = $this->input->post('username');
+                $password = $this->input->post('password');
+                
+                //get data from db   USER_MASTER 
+                $arrCondition = array("user_name"=> $username,"password"=> $password);
+                $arrresult = $this->helper_model->selectGroupId("*",USER_MASTER,$arrCondition);
+                
+                if ($arrresult['total_rows'] > 0) {
+                    $table_data = $arrresult['table_data'];
+                    
+                    $sess_data = array(
+                        'username' => $table_data->user_name,
+                        'userid' => $table_data->user_id,
+                        'role' => $table_data->user_roles
+                    );
+                    $this->session->set_userdata('logged_in', $sess_data);
+                    $data['success'] = true;
+                } else {
+                    $data['error_message'] = 'Invalid Username or Password';
+                    $data['success'] = false;
+                }
+            }
+            
+            echo json_encode($data);exit();
+        }
 	 
 	public function adduser()
-	{	
+	{
 				
 		 $vendor_name = isset($_POST['vendor_name']) ? $_POST['vendor_name'] : "";
 		 $vendor_mobile_number = isset($_POST['vendor_contact_number']) ? $_POST['vendor_contact_number'] : "";

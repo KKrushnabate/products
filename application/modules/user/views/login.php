@@ -6,12 +6,13 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
 		<title>Login Page - Ace Admin</title>
-
+                
 		<meta name="description" content="User login page" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
 		<!-- bootstrap & fontawesome -->
 		<link rel="stylesheet" href="<?php echo base_url(); ?>css/bootstrap.min.css" />
+                <link rel="stylesheet" href="<?php echo base_url(); ?>css/custom.css" />
 		<link rel="stylesheet" href="<?php echo base_url(); ?>css/font-awesome.min.css" />
 
 		<!-- text fonts -->
@@ -52,7 +53,7 @@
 							</div>
 
 							<div class="space-6"></div>
-
+                                                        <input type="hidden" id ="baseUrl" value="<?php echo site_url(); ?>">
 							<div class="position-relative">
 								<div id="login-box" class="login-box visible widget-box no-border">
 									<div class="widget-body">
@@ -64,19 +65,25 @@
 
 											<div class="space-6"></div>
 
-											<form>
+											<form name="form_login" id="form_login">
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="text" class="form-control" placeholder="Username" />
+															<input type="text" class="form-control mandatory-field" placeholder="Username" id="username" name="username"/>
 															<i class="ace-icon fa fa-user"></i>
+                                                                                                                        <span class="help-inline">
+                                                                                                                            <span class="middle input-text-error" id="username_errorlabel"></span>
+                                                                                                                        </span>
 														</span>
 													</label>
 
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="Password" />
+															<input type="password" class="form-control mandatory-field" placeholder="Password" id="password" name="password" />
 															<i class="ace-icon fa fa-lock"></i>
+                                                                                                                        <span class="help-inline">
+                                                                                                                            <span class="middle input-text-error" id="password_errorlabel"></span>
+                                                                                                                        </span>
 														</span>
 													</label>
 
@@ -88,9 +95,9 @@
 															<span class="lbl"> Remember Me</span>
 														</label>
 
-														<button type="button" class="width-35 pull-right btn btn-sm btn-primary">
+														<button type="submit" class="width-35 pull-right btn btn-sm btn-primary">
 															<i class="ace-icon fa fa-key"></i>
-															<span class="bigger-110">Login</span>
+															<span class="bigger-110" >Login</span>
 														</button>
 													</div>
 
@@ -291,6 +298,8 @@
 
 		<!--[if !IE]> -->
 		<script src="<?php echo base_url(); ?>js/jquery.min.js"></script>
+                <script src="<?php echo base_url(); ?>js/custom.js"></script>
+                <script src="<?php echo base_url(); ?>js/form-validation.js"></script>
 
 		<!-- <![endif]-->
 
