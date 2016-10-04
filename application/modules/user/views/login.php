@@ -155,11 +155,11 @@
 												Enter your email and to receive instructions
 											</p>
 
-											<form>
+											<form id="reset_password" name="reset_password">
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="email" class="form-control" placeholder="Email" />
+															<input type="email" class="form-control mandatory-field" placeholder="Email" />
 															<i class="ace-icon fa fa-envelope"></i>
 														</span>
 													</label>
@@ -194,46 +194,46 @@
 											<div class="space-6"></div>
 											<p> Enter your details to begin: </p>
 
-											<form>
+											<form id = "register_user" name = "register_user">
 												<fieldset>
                                                                                                         <label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="fullname" class="form-control" placeholder="Full Name" />
+															<input type="fullname" class="form-control mandatory-field" placeholder="Full Name" id="fullname" name="fullname"/>
 															<i class="ace-icon fa fa-user"></i>
 														</span>
 													</label>
                                                                                                         
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="text" class="form-control" placeholder="Username" />
+															<input type="text" class="form-control mandatory-field" placeholder="Username" id="username" name="username"/>
 															<i class="ace-icon fa fa-user"></i>
 														</span>
 													</label>
 
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="Password" />
+															<input type="password" class="form-control mandatory-field" placeholder="Password" id="passward" name="passward"/>
 															<i class="ace-icon fa fa-lock"></i>
 														</span>
 													</label>
                                                                                                     
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="Repeat password" />
+															<input type="password" class="form-control mandatory-field" placeholder="Repeat password" id="remote_passward" name="remote_passward"/>
 															<i class="ace-icon fa fa-retweet"></i>
 														</span>
 													</label>
                                                                                                         
                                                                                                         <label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="email" class="form-control" placeholder="Email" />
+															<input type="email" class="form-control mandatory-field" placeholder="Email"  id="email_id" name="email_id"/>
 															<i class="ace-icon fa fa-envelope"></i>
 														</span>
 													</label>
                                                                                                     
                                                                                                         <label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="mobile" class="form-control" placeholder="Mobile number" />
+															<input type="mobile" class="form-control mandatory-field" placeholder="Mobile number" id="phone_number" name="phone_number"/>
 															<i class="ace-icon fa fa-phone"></i>
 														</span>
 													</label>

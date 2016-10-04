@@ -40,7 +40,7 @@ class User extends MX_Controller {
                 $password = $this->input->post('password');
                 
                 //get data from db   USER_MASTER 
-                $arrCondition = array("user_name"=> $username,"password"=> $password);
+                $arrCondition = array("user_name"=> $username,"password"=> $password, "status"=> 1, "approved_by_admin"=> 1);
                 $arrresult = $this->helper_model->selectGroupId("*",USER_MASTER,$arrCondition);
                 
                 if ($arrresult['total_rows'] > 0) {
