@@ -416,7 +416,6 @@ $(document).ready(function () {
                     fields_nf = obj_mand.eq(index).attr("id");
                     
                     var data = $('#'+fields_nf).val();
-                    
                     $("#" + fields_nf+"_errorlabel").html("");
                 }
                     
@@ -425,7 +424,7 @@ $(document).ready(function () {
                 {
                     fields_nf = obj_mand.eq(index).attr("id");
                     var data = $('#'+fields_nf).val();
-
+                    
                     
                     $("#" + fields_nf+"_errorlabel").html("Please enter "+msg_re.toLowerCase());
                     error = 'true';
@@ -581,17 +580,23 @@ function ajaxCall(id, postData, method, sucessCallBack, failCallBack, timeout) {
                 </div>');
                 $("#"+id)[0].reset();*/
             } else {
-                $('.icon'+id).removeClass('ace-icon fa fa-spinner fa-spin orange bigger-125');
+                //alert(data.stringify);
+                var arrErrorMessages = jQuery.parseJSON(JSON.stringify(data));
+                
+                if(arrErrorMessages["error_message"].length > 0){
+                    $("#"+id).find(".error_show").html(arrErrorMessages['error_message'].join("\n"));
+                }
+                /*$('.icon'+id).removeClass('ace-icon fa fa-spinner fa-spin orange bigger-125');
                 $('.alert-box').html('<div class="alert alert-block alert-danger">\
                     <button type="button" class="close" data-dismiss="alert">\
                         <i class="ace-icon fa fa-times"></i>\
                     </button>\
                     <p>\
                         <strong>\
-                            '+data.errorMsg+'\
+                            '+arrErrorMessages['error_message']+'\
                         </strong>\
                     </p>\
-                </div>');
+                </div>');*/
             }
         },
         error: function (xhr, ajaxOptions, thrownError) {
