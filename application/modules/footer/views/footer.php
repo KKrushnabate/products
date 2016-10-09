@@ -2,7 +2,7 @@
 				<div class="footer-inner">
 					<div class="footer-content">
 						<span class="bigger-120">
-							<span class="blue bolder">Ace</span>
+							<span class="blue bolder"><?php echo $company_details['company_application']; ?></span>
 							Application &copy; 2013-2014
 						</span>
 

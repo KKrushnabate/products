@@ -5,7 +5,7 @@
 <head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>Login Page - Ace Admin</title>
+		<title>Login Page - <?php echo $company_details['company_admin']; ?></title>
                 
 		<meta name="description" content="User login page" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -46,7 +46,7 @@
 							<div class="center">
 								<h1>
 									<i class="ace-icon fa fa-leaf green"></i>
-									<span class="red">Ace</span>
+									<span class="red"><?php echo $company_details['company_application']; ?></span>
 									<span class="white" id="id-text2">Application</span>
 								</h1>
 								<h4 class="blue" id="id-company-text">&copy; <?php echo $company_details['company_name']; ?></h4>

@@ -5,7 +5,7 @@
 <head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>Dashboard - Ace Admin</title>
+		<title>Dashboard - <?php echo $company_details['company_admin']; ?> Admin</title>
 
 		<meta name="description" content="overview &amp; stats" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -74,7 +74,7 @@
 					<a href="#" class="navbar-brand">
 						<small>
 							<i class="fa fa-leaf"></i>
-							Ace Admin
+							<?php echo $company_details['company_admin']; ?>
 						</small>
 					</a>
 				</div>
@@ -426,7 +426,16 @@
 
 						<b class="arrow"></b>
 					</li>
+                                        
+                                        <li class="active">
+						<a href="<?php echo site_url("/currency/index"); ?>">
+							<i class="menu-icon fa fa-tachometer"></i>
+							<span class="menu-text"> Currency </span>
+						</a>
 
+						<b class="arrow"></b>
+					</li>
+                                        
 					<li class="">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-desktop"></i>
@@ -441,10 +450,9 @@
 
 						<ul class="submenu">
 							<li class="">
-								<a href="<?php echo site_url("/vehicle/category"); ?>">
+								<a href="">
 									<i class="menu-icon fa fa-caret-right"></i>
-
-									Add Category
+									Currency
 								</a>
 
 								<b class="arrow"></b>

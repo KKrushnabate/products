@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class User extends MX_Controller {
+class Currency extends MX_Controller {
         private $view_data = array();
 	function __construct() {
 	    parent::__construct();
@@ -8,59 +8,19 @@ class User extends MX_Controller {
             $this->load->helper('form');
             $this->load->module('header/header');
             $this->load->module('footer/footer');
-            $this->load->model('user/user_model');
+            $this->load->model('user/currency_model');
             $this->load->model('helper/helper_model');
 	}
         public function  index(){
-            $this->userMaster();
+            $this->currencyMaster();
         }
-	public function userMaster(){
+	public function currencyMaster(){
 		$this->header->index();
-		$this->load->view('UserAdd');
+		$this->load->view('currencyAdd');
 		$this->footer->index();
 	}
 	
-	public function login()
-	{
-            $this->load->view('login',$this->view_data);
-	} 
-	
-        public function login_process(){
-            $this->load->library('form_validation');
-            $this->form_validation->set_rules('username', 'Username', 'trim|required');
-            $this->form_validation->set_rules('password', 'Password', 'trim|required');
-            
-            if ($this->form_validation->run() == FALSE) {
-                $data['error_messages'] = validation_errors();
-                $data['success'] = false;
-            } else {
-                $username = $this->input->post('username');
-                $password = $this->input->post('password');
-                
-                //get data from db   USER_MASTER 
-                $arrCondition = array("user_name"=> $username,"password"=> $password, "status"=> 1, "approved_by_admin"=> 1);
-                $arrresult = $this->helper_model->selectGroupId("*",USER_MASTER,$arrCondition);
-                
-                if ($arrresult['total_rows'] > 0) {
-                    $table_data = $arrresult['table_data'];
-                    
-                    $sess_data = array(
-                        'username' => $table_data->user_name,
-                        'userid' => $table_data->user_id,
-                        'role' => $table_data->user_roles
-                    );
-                    $this->session->set_userdata('logged_in', $sess_data);
-                    $data['success'] = true;
-                } else {
-                    $data['error_message'] = 'Invalid Username or Password';
-                    $data['success'] = false;
-                }
-            }
-            
-            echo json_encode($data);exit();
-        }
-	 
-	public function adduser()
+	public function addCurrency()
 	{
 				
 		 $vendor_name = isset($_POST['vendor_name']) ? $_POST['vendor_name'] : "";
@@ -176,7 +136,7 @@ class User extends MX_Controller {
  	}
 
 
- 	public function userList(){
+ 	public function currencyList(){
  		$vendor_table =  VENDOR_TABLE;
  		$filds = "vendor_id,vendor_name,vendor_contact_number,vendor_address,vendor_email,vendor_pan_num,vendor_payee_name";
  		$data['list'] = $this->Vendor_model->getVendorLit($filds,$vendor_table);
@@ -200,97 +160,4 @@ class User extends MX_Controller {
         echo json_encode($response);
  	}
 
-
- 	public function update($id){        
-        $select = '*';
-		$tableName = VENDOR_TABLE;
-		$column = 'vendor_id';
-		$value = $id;
-		$data['vendor'] = $this->Vendor_model->getData($select, $tableName, $column, $value);
-		$data['update'] = true;
-		$this->header->index();
-		$this->load->view('VendorAdd', $data);
-		$this->footer->index();
- 	}
-
- 	public function userUpdate(){        
-
- 		$vendor_name = isset($_POST['vendor_name']) ? $_POST['vendor_name'] : "";
-		 $vendor_mobile_number = isset($_POST['vendor_contact_number']) ? $_POST['vendor_contact_number'] : "";
-		 $vendor_phone_number = isset($_POST['vendor_phone_number']) ? $_POST['vendor_phone_number'] : "";
-		 $vendor_email = isset($_POST['vendor_email']) ? $_POST['vendor_email'] : "";
-		 $vendor_notes = isset($_POST['vendor_notes']) ? $_POST['vendor_notes'] : "";
-		 $vendor_service_regn = isset($_POST['vendor_service_regn']) ? $_POST['vendor_service_regn'] : "";
-		 $vendor_pan_num = isset($_POST['vendor_pan_num']) ? $_POST['vendor_pan_num'] : "";
-		 $vendor_section_code = isset($_POST['vendor_section_code']) ? $_POST['vendor_section_code'] : "";
-		 $vendor_payee_name = isset($_POST['vendor_payee_name']) ? $_POST['vendor_payee_name'] : "";
-		 $vendor_address = isset($_POST['vendor_address']) ? $_POST['vendor_address'] : "";
-
-		 $vendor_vat = isset($_POST['vendor_vat']) ? $_POST['vendor_vat'] : "";
-		 $vendor_cst = isset($_POST['vendor_cst']) ? $_POST['vendor_cst'] : "";
-		 $vendor_gst = isset($_POST['vendor_gst']) ? $_POST['vendor_gst'] : "";
-
-		 $vendor_ledger_id = isset($_POST['vendor_ledger_id']) ? $_POST['vendor_ledger_id'] : "";
-
-		 $vendor_update = array(
-			'vendor_name' => $vendor_name,
-			'vendor_contact_number' => $vendor_mobile_number,
-			'vendor_phone_number' => $vendor_phone_number,
-			'vendor_email' => $vendor_email,
-			'vendor_notes' => $vendor_notes,
-			'vendor_service_regn' => $vendor_service_regn,
-			'vendor_pan_num' => $vendor_pan_num,
-			'vendor_section_code' => $vendor_section_code,
-			'vendor_payee_name' => $vendor_payee_name,
-			'vendor_address' => $vendor_address,
-			'vendor_vat' => $vendor_vat,
-			'vendor_cst' => $vendor_cst,
-			'vendor_gst' => $vendor_gst,
-			'status' => '1',
-			'updated_by' => '1',
-			'updated_on' => date('Y-m-d h:i:s')
-		);
-     
-		$this->db->trans_begin();
-		$vendor_table = VENDOR_TABLE;
-		$vendor_column = 'vendor_id';
-		$vendor_id = $_POST['id'];
-
-		$result = $this->Vendor_model->updateData($vendor_table, $vendor_update, $vendor_column, $vendor_id);
-
-		if(isset($result) && $result == true) {
-			$ledgertable = LEDGER_TABLE;
-			$ledger_column = 'ledger_account_id';
-			$ledger_update = array(
-			'ledger_account_name' => $vendor_name."_".$vendor_id,
-			'status' => '1',
-			'updated_by' => '1',
-			'updated_on' => date('Y-m-d h:i:s')
-			);
-
-			$ledger_result = $this->Vendor_model->updateData($ledgertable, $ledger_update, $ledger_column, $vendor_ledger_id);
-
-			if(empty($ledger_result) || $ledger_result == false) {
-
-				$this->db->trans_rollback();
-	 	 		$response['error'] = true;
-	 	 		$response['success'] = false;
-				$response['errorMsg'] = "Error!!! Please contact IT Dept";
-
-			} else{
-				$this->db->trans_commit();
-				$response['success'] = true;
-				$response['error'] = false;
-				$response['successMsg'] = "Staff Updated Successfully";
-			}
-		} else {
-
-			$this->db->trans_rollback();
- 	 		$response['error'] = true;
- 	 		$response['success'] = false;
-			$response['errorMsg'] = "Error!!! Please contact IT Dept";
-		}
-
-        echo json_encode($response);
- 	}
 }

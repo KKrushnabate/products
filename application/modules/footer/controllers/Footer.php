@@ -1,14 +1,15 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Footer extends MX_Controller {
-
+        private $view_data = array();   
 	function __construct() {
 	    parent::__construct();
+            $this->view_data['company_details'] = $this->config->item('company_details');
 	}
 
 	public function index()
 	{
-		$this->load->view('footer');
+		$this->load->view('footer',$this->view_data);
 	}
 }
 
