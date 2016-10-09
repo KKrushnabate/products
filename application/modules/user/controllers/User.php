@@ -29,7 +29,7 @@ class User extends MX_Controller {
             $this->load->library('form_validation');
             $this->form_validation->set_rules('username', 'Username', 'trim|required');
             $this->form_validation->set_rules('password', 'Password', 'trim|required');
-            
+            $data = array();
             if ($this->form_validation->run() == FALSE) {
                 $data['error_messages'] = validation_errors();
                 $data['success'] = false;
@@ -52,7 +52,8 @@ class User extends MX_Controller {
                     $this->session->set_userdata('logged_in', $sess_data);
                     $data['success'] = true;
                 } else {
-                    $data['error_message'] = 'Invalid Username or Password';
+                    $data['error_message'][] = "Invalid Username or Password.";
+                    $data['error_message'][] = "Invalid Username or Password.";
                     $data['success'] = false;
                 }
             }
