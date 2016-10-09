@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Currency_model extends CI_Model {
+class Diemaster_model extends CI_Model {
 
 	function __construct(){
 		// Call the Model constructor
@@ -19,9 +19,6 @@ class Currency_model extends CI_Model {
 		return $result;
 	}
 
-	public function listDriver(){
-
-	}
 
 	public function getGroupId($select,$tableName,$context,$entity_type,$where){
 
@@ -29,7 +26,7 @@ class Currency_model extends CI_Model {
 		return $result;
 	}
 
-	public function getCurrencyList($data,$table){
+	public function getDiemasterList($data,$table){
 
 		$result = $this->helper_model->selectAll($data,$table);
 		return $result;

@@ -428,6 +428,15 @@
 					</li>
                                         
                                         <li class="active">
+						<a href="<?php echo site_url("/diemaster/index"); ?>">
+							<i class="menu-icon fa fa-tachometer"></i>
+							<span class="menu-text"> Diemaster </span>
+						</a>
+
+						<b class="arrow"></b>
+					</li>
+                                        
+                                        <li class="active">
 						<a href="<?php echo site_url("/currency/index"); ?>">
 							<i class="menu-icon fa fa-tachometer"></i>
 							<span class="menu-text"> Currency </span>

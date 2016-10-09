@@ -3,7 +3,8 @@ var array = [
 	{name: "form_login", value: baseUrl + "/user/login_process",redirect:baseUrl + "/dashboard/index"},
         {name: "register_user_login", value: baseUrl + "/user/adduser",redirect:baseUrl + "/user/login"},
         {name: "usermaster", value: baseUrl + "/user/adduser",redirect:baseUrl + "/user/userList"},
-	{name: "vehicle", value: baseUrl + "vehicle/vehicleSubmit"},
+	{name: "currencymaster", value: baseUrl + "/currency/addCurrency",redirect:baseUrl + "/currency/currencyList"},
+        
 	{name: "vehicleList", value: baseUrl + "vehicle/vehicleDelete"},
 	{name: "vehicle_update", value: baseUrl + "vehicle/vehicleUpdate"},
 	{name: "drivermaster", value: baseUrl + "driver/driverMasterSubmit"},

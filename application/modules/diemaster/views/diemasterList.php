@@ -6,7 +6,7 @@
 					<i class="ace-icon fa fa-home home-icon"></i>
 					<a href="<?php echo site_url();?>">Home</a>
 				</li>
-				<li class="active">Currency</li>
+				<li class="active">Diemaster</li>
 			</ul><!-- /.breadcrumb -->
 
 			<div class="nav-search" id="nav-search">
@@ -51,12 +51,11 @@
 									<thead>
 										<tr>
 											<th>Currency Name</th>
-                                                                                        <th>Currency Description</th>
+											<th>Currency Description</th>
 											<th>Currency Sign</th>
-                                                                                        <th>Round Value</th>
-                                                                                        <th>Purchase Rate</th>
-                                                                                        <th>Sales Rate</th>
-                                                                                        <th>Action</th>
+											<th>Round Value</th>
+											<th>Purchase Rate</th>
+											<th>Sales Rate</th>
 										</tr>
 									</thead>
 
@@ -67,16 +66,8 @@
 												<td><?php echo $val->CurrencyDescription; ?></td>
 												<td><?php echo $val->CurrencySign; ?></td>
 												<td><?php echo $val->RoundValue; ?></td>
-                                                                                                <td><?php echo $val->PurchaseRate; ?></td>
-                                                                                                <td><?php echo $val->SalesRate; ?></td>
-											
-												<td>
-													<div class="hidden-sm hidden-xs action-buttons">
-														<a class="green" href="<?php echo site_url('/currency/currencyMaster/'.$val->SrNo); ?>">
-															<i class="ace-icon fa fa-pencil bigger-130"></i>
-														</a>
-													</div>
-												</td>
+												<td><?php echo $val->PurchaseRate; ?></td>
+												<td><?php echo $val->SalesRate; ?></td>
 											</tr>
 										<?php endforeach; ?>
 									</tbody>

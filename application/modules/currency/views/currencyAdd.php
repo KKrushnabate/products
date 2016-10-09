@@ -8,9 +8,9 @@
                 </li>
 
                 <li>
-                    <a href="#">User</a>
+                    <a href="<?php echo site_url('/currency/index'); ?>">Currency</a>
                 </li>
-                <li class="active">Add User</li>
+                <li class="active">Add Currency</li>
             </ul><!-- /.breadcrumb -->
 
             <div class="nav-search" id="nav-search">
@@ -27,7 +27,7 @@
 
             <div class="page-header">
                 <h1>
-                    Add User
+                    Add Currency
                 </h1>
             </div><!-- /.page-header -->
 
@@ -36,10 +36,65 @@
                     <div class="alert-box"></div>
                         <!-- PAGE CONTENT BEGINS -->
                             <?php
-                                $strFormId = (isset($staff))?"userupdate":"usermaster";
+                                $strFormId = "currencymaster";
                                 $arrAttributers = array("class"=>"form-horizontal", "role"=>"form","id"=>$strFormId);
                                 echo form_open('',$arrAttributers); 
                             ?>
+                        
+                            <div class="form-group">
+                                <label class="col-sm-2 no-padding-right" for="form-field-2">Currency Name*</label>
+
+                                <div class="col-sm-9">
+                                    <?php 
+                                    $data = array(
+                                        'name'          => 'SrNo',
+                                        'id'            => 'SrNo',
+                                        'type'            => 'hidden',
+                                        'value'         => (!empty($currencydata[0])) ? $currencydata[0]->SrNo: '',
+                                        );
+
+                                    echo form_input($data);
+                                        
+                                    $data = array(
+                                        'name'          => 'CurrencyName',
+                                        'id'            => 'CurrencyName',
+                                        'value'         => (!empty($currencydata[0])) ? $currencydata[0]->CurrencyName: '',
+                                        'maxlength'     => '45',
+                                        "placeholder"   => "Enter Currency Name",
+                                        "readonly"      => "readonly",
+                                        "class"         => "col-xs-10 col-sm-5 mandatory-field"
+                                        );
+
+                                        echo form_input($data);
+                                    ?>
+                                        <span class="help-inline col-xs-12 col-sm-7">
+                                                <span class="middle input-text-error" id="CurrencyName_errorlabel"></span>
+                                        </span>
+                                </div>
+                            </div>
+                                        
+                            <div class="form-group">
+                                <label class="col-sm-2 no-padding-right" for="form-field-2">Currency Description*</label>
+
+                                <div class="col-sm-9">
+                                    <?php 
+                                    $data = array(
+                                        'name'          => 'CurrencyDescription',
+                                        'id'            => 'CurrencyDescription',
+                                        'value'         => (!empty($currencydata[0])) ? $currencydata[0]->CurrencyDescription: '',
+                                        'maxlength'     => '100',
+                                        "placeholder"   => "Currency Description",
+                                        "readonly"      => "readonly",
+                                        "class"         => "col-xs-10 col-sm-5 mandatory-field"
+                                        );
+
+                                        echo form_input($data);
+                                    ?>
+                                        <span class="help-inline col-xs-12 col-sm-7">
+                                                <span class="middle input-text-error" id="CurrencyDescription_errorlabel"></span>
+                                        </span>
+                                </div>
+                            </div>
                         
                             <div class="form-group">
                                 <label class="col-sm-2 no-padding-right" for="form-field-2"> User First Name*</label>
@@ -47,146 +102,85 @@
                                 <div class="col-sm-9">
                                     <?php 
                                     $data = array(
-                                        'name'          => 'user_id',
-                                        'id'            => 'user_id',
-                                        'value'         => (!empty($user_id)) ? $user_id: '',
-                                        );
-
-                                    echo form_hidden($data);
-                                        
-                                    $data = array(
-                                        'name'          => 'fullname',
-                                        'id'            => 'fullname',
-                                        'value'         => (!empty($fullname)) ? $fullname: '',
+                                        'name'          => 'CurrencySign',
+                                        'id'            => 'CurrencySign',
+                                        'value'         => (!empty($currencydata[0])) ? $currencydata[0]->CurrencySign: '',
                                         'maxlength'     => '45',
-                                        "placeholder"   => "Enter full name",
+                                        "placeholder"   => "Currency Sign",
+                                        "readonly"      => "readonly",
                                         "class"         => "col-xs-10 col-sm-5 mandatory-field"
                                         );
 
                                         echo form_input($data);
                                     ?>
                                         <span class="help-inline col-xs-12 col-sm-7">
-                                                <span class="middle input-text-error" id="user_fullname_errorlabel"></span>
+                                                <span class="middle input-text-error" id="CurrencySign_errorlabel"></span>
                                         </span>
                                 </div>
                             </div>
-                                        
-                            <div class="form-group">
-                                    <label class="col-sm-2 no-padding-right" for=""> User Name *</label>
-
-                                    <div class="col-sm-9">
-                                        <?php
-                                            $data = array(
-                                                'name'          => 'user_name',
-                                                'id'            => 'user_name',
-                                                'value'         => (!empty($user_name)) ? $user_name: '',
-                                                'maxlength'     => '45',
-                                                "placeholder"   => "Enter UserName for Login",
-                                                "class"         => "col-xs-10 col-sm-5 mandatory-field"
-                                            );
-
-                                        echo form_input($data);
-                                        ?>
-                                        <span class="help-inline col-xs-12 col-sm-7">
-                                                <span class="middle input-text-error" id="user_name_errorlabel"></span>
-                                        </span>
-                                    </div>
-                            </div>
-                        
                             
                             <div class="form-group">
-                                    <label class="col-sm-2 no-padding-right" for=""> Password *</label>
+                                <label class="col-sm-2 no-padding-right" for="form-field-2"> Round Value*</label>
 
-                                    <div class="col-sm-9">
-                                        <?php
-                                            $data = array(
-                                                'name'          => 'password',
-                                                'id'            => 'password',
-                                                'value'         => (!empty($password)) ? $password: '',
-                                                'maxlength'     => '45',
-                                                "placeholder"   => "Enter Password",
-                                                "class"         => "col-xs-10 col-sm-5 mandatory-field"
-                                            );
-
-                                        echo form_password($data);
-                                        ?>
-                                        <span class="help-inline col-xs-12 col-sm-7">
-                                                <span class="middle input-text-error" id="password_errorlabel"></span>
-                                        </span>
-                                    </div>
-                            </div>
-                        
-                            <div class="form-group">
-                                    <label class="col-sm-2 no-padding-right" for=""> Repeat Password *</label>
-
-                                    <div class="col-sm-9">
-                                        <?php
-                                            $data = array(
-                                                'name'          => 'repeat_password',
-                                                'id'            => 'repeat_password',
-                                                'value'         => (!empty($repeat_password)) ? $repeat_password: '',
-                                                'maxlength'     => '45',
-                                                "placeholder"   => "Enter Repeat Password",
-                                                "class"         => "col-xs-10 col-sm-5 mandatory-field"
-                                            );
-
-                                        echo form_password($data);
-                                        ?>
-                                        <span class="help-inline col-xs-12 col-sm-7">
-                                                <span class="middle input-text-error" id="repeat_password_errorlabel"></span>
-                                        </span>
-                                    </div>
-                            </div>
-                        
-                            <div class="form-group">
-                                    <label class="col-sm-2 no-padding-right" for="form-field-2"> User Email Id*</label>
-                                    <div class="col-sm-9">
-                                        <?php
-                                            $data = array(
-                                                'name'          => 'approved_by_admin',
-                                                'id'            => 'approved_by_admin',
-                                                'value'         => '1',
-                                                );
-
-                                            echo form_hidden($data);
-                                        
-                                            $data = array(
-                                                'name'          => 'user_email_id',
-                                                'id'            => 'user_email_id',
-                                                'value'         => (!empty($user_email_id)) ? $user_email_id: '',
-                                                'maxlength'     => '45',
-                                                "placeholder"   => "Enter user email Id",
-                                                "class"         => "col-xs-10 col-sm-5 mandatory-field"
-                                            );
+                                <div class="col-sm-9">
+                                    <?php 
+                                    $data = array(
+                                        'name'          => 'RoundValue',
+                                        'id'            => 'RoundValue',
+                                        'value'         => (!empty($currencydata[0])) ? $currencydata[0]->RoundValue: '',
+                                        'maxlength'     => '45',
+                                        "placeholder"   => "Enter Round Value",
+                                        "class"         => "col-xs-10 col-sm-5 mandatory-field"
+                                        );
 
                                         echo form_input($data);
-                                        ?>
+                                    ?>
                                         <span class="help-inline col-xs-12 col-sm-7">
-                                                <span class="middle input-text-error" id="user_email_id_errorlabel"></span>
+                                                <span class="middle input-text-error" id="RoundValue_errorlabel"></span>
                                         </span>
                                 </div>
-                                    
                             </div>
                         
                             <div class="form-group">
-                                    <label class="col-sm-2 no-padding-right" for="form-field-2"> User Phone Number*</label>
+                                <label class="col-sm-2 no-padding-right" for="form-field-2"> Purchase Rate*</label>
 
-                                    <div class="col-sm-9">
-                                        <?php
-                                            $data = array(
-                                                'name'          => 'user_phone_number',
-                                                'id'            => 'user_phone_number',
-                                                'value'         => (!empty($user_phone_number)) ? $user_phone_number : '',
-                                                'maxlength'     => '45',
-                                                "placeholder"   => "Enter user phone number",
-                                                "onKeyUp"       => "javascript:return check_isnumeric(event,this,0);",
-                                                "class"         => "col-xs-10 col-sm-5 mandatory-field"
-                                            );
+                                <div class="col-sm-9">
+                                    <?php 
+                                    $data = array(
+                                        'name'          => 'PurchaseRate',
+                                        'id'            => 'PurchaseRate',
+                                        'value'         => (!empty($currencydata[0])) ? $currencydata[0]->PurchaseRate: '',
+                                        'maxlength'     => '45',
+                                        "placeholder"   => "Enter Purchase Rate",
+                                        "class"         => "col-xs-10 col-sm-5 mandatory-field"
+                                        );
 
-                                            echo form_input($data);
-                                        ?>
+                                        echo form_input($data);
+                                    ?>
                                         <span class="help-inline col-xs-12 col-sm-7">
-                                                <span class="middle input-text-error" id="user_phone_number_errorlabel"></span>
+                                                <span class="middle input-text-error" id="PurchaseRate_errorlabel"></span>
+                                        </span>
+                                </div>
+                            </div>
+                        
+                            <div class="form-group">
+                                <label class="col-sm-2 no-padding-right" for="form-field-2">Sales Rate*</label>
+
+                                <div class="col-sm-9">
+                                    <?php 
+                                    $data = array(
+                                        'name'          => 'SalesRate',
+                                        'id'            => 'SalesRate',
+                                        'value'         => (!empty($currencydata[0])) ? $currencydata[0]->SalesRate: '',
+                                        'maxlength'     => '45',
+                                        "placeholder"   => "Enter Sales Rate",
+                                        "class"         => "col-xs-10 col-sm-5 mandatory-field"
+                                        );
+
+                                        echo form_input($data);
+                                    ?>
+                                        <span class="help-inline col-xs-12 col-sm-7">
+                                                <span class="middle input-text-error" id="SalesRate_errorlabel"></span>
                                         </span>
                                 </div>
                             </div>

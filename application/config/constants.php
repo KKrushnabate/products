@@ -93,4 +93,6 @@ define("DATABASE_NAME", "MasterDB");
 define("USER_MASTER", "tbl_user_master");
 define("ROLE_MASTER", "tbl_role_master");
 define("MENU_MASTER", "tbl_menu_master");
+define("MASTERCURRENCY", "Currency");
+define("MASTERDIEMASTER", "DieMasterNew");
 /*******************END DB CONSTANTS*************************/
