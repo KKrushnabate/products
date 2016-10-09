@@ -4,11 +4,11 @@
             <ul class="breadcrumb">
                 <li>
                     <i class="ace-icon fa fa-home home-icon"></i>
-                    <a href="#">Home</a>
+                    <a href="<?php echo site_url();?>">Home</a>
                 </li>
 
                 <li>
-                    <a href="#">User</a>
+                    <a href="<?php echo site_url("/user/userList"); ?>">User</a>
                 </li>
                 <li class="active">Add User</li>
             </ul><!-- /.breadcrumb -->
@@ -49,15 +49,16 @@
                                     $data = array(
                                         'name'          => 'user_id',
                                         'id'            => 'user_id',
-                                        'value'         => (!empty($user_id)) ? $user_id: '',
+                                        'type'            => 'hidden',
+                                        'value'         => (!empty($userdata[0])) ? $userdata[0]->user_id: '',
                                         );
 
-                                    echo form_hidden($data);
+                                    echo form_input($data);
                                         
                                     $data = array(
                                         'name'          => 'fullname',
                                         'id'            => 'fullname',
-                                        'value'         => (!empty($fullname)) ? $fullname: '',
+                                        'value'         => (!empty($userdata[0])) ? $userdata[0]->user_full_name: '',
                                         'maxlength'     => '45',
                                         "placeholder"   => "Enter full name",
                                         "class"         => "col-xs-10 col-sm-5 mandatory-field"
@@ -77,9 +78,9 @@
                                     <div class="col-sm-9">
                                         <?php
                                             $data = array(
-                                                'name'          => 'user_name',
-                                                'id'            => 'user_name',
-                                                'value'         => (!empty($user_name)) ? $user_name: '',
+                                                'name'          => 'resusername',
+                                                'id'            => 'resusername',
+                                                'value'         => (!empty($userdata[0])) ? $userdata[0]->user_name: '',
                                                 'maxlength'     => '45',
                                                 "placeholder"   => "Enter UserName for Login",
                                                 "class"         => "col-xs-10 col-sm-5 mandatory-field"
@@ -93,22 +94,22 @@
                                     </div>
                             </div>
                         
-                            
+                            <?php if(empty($userdata[0] )){ ?>
                             <div class="form-group">
                                     <label class="col-sm-2 no-padding-right" for=""> Password *</label>
 
                                     <div class="col-sm-9">
                                         <?php
                                             $data = array(
+                                                'type' => "password",
                                                 'name'          => 'password',
                                                 'id'            => 'password',
-                                                'value'         => (!empty($password)) ? $password: '',
+                                                'value'         => '',
                                                 'maxlength'     => '45',
                                                 "placeholder"   => "Enter Password",
                                                 "class"         => "col-xs-10 col-sm-5 mandatory-field"
                                             );
-
-                                        echo form_password($data);
+                                            echo form_input($data);
                                         ?>
                                         <span class="help-inline col-xs-12 col-sm-7">
                                                 <span class="middle input-text-error" id="password_errorlabel"></span>
@@ -122,22 +123,38 @@
                                     <div class="col-sm-9">
                                         <?php
                                             $data = array(
+                                                'type' => "password",
                                                 'name'          => 'repeat_password',
                                                 'id'            => 'repeat_password',
-                                                'value'         => (!empty($repeat_password)) ? $repeat_password: '',
+                                                'value'         =>   '',
                                                 'maxlength'     => '45',
                                                 "placeholder"   => "Enter Repeat Password",
                                                 "class"         => "col-xs-10 col-sm-5 mandatory-field"
                                             );
-
-                                        echo form_password($data);
+                                        echo form_input($data);
                                         ?>
                                         <span class="help-inline col-xs-12 col-sm-7">
                                                 <span class="middle input-text-error" id="repeat_password_errorlabel"></span>
                                         </span>
                                     </div>
                             </div>
-                        
+                            <?php }else{
+                                $data = array(
+                                                'type' => "hidden",
+                                                'name'          => 'password',
+                                                'id'            => 'password',
+                                                'value'         => $userdata[0]->password,
+                                            );
+                                            echo form_input($data);
+                                            
+                                            $data = array(
+                                                'type' => "hidden",
+                                                'name'          => 'repeat_password',
+                                                'id'            => 'repeat_password',
+                                                'value'         => $userdata[0]->password,
+                                            );
+                                            echo form_input($data);
+                            } ?>
                             <div class="form-group">
                                     <label class="col-sm-2 no-padding-right" for="form-field-2"> User Email Id*</label>
                                     <div class="col-sm-9">
@@ -145,15 +162,43 @@
                                             $data = array(
                                                 'name'          => 'approved_by_admin',
                                                 'id'            => 'approved_by_admin',
+                                                'type'            => 'hidden',
                                                 'value'         => '1',
                                                 );
 
-                                            echo form_hidden($data);
-                                        
+                                            echo form_input($data);
+                                            
                                             $data = array(
-                                                'name'          => 'user_email_id',
-                                                'id'            => 'user_email_id',
-                                                'value'         => (!empty($user_email_id)) ? $user_email_id: '',
+                                                'name'          => 'status',
+                                                'id'            => 'status',
+                                                'type'            => 'hidden',
+                                                'value'         => '1',
+                                                );
+
+                                            echo form_input($data);
+                                            
+                                            $data = array(
+                                                'name'          => 'added_by',
+                                                'id'            => 'added_by',
+                                                'type'            => 'hidden',
+                                                'value'         => (!empty($userdata[0])) ? $userdata[0]->added_by: '',
+                                                );
+
+                                            echo form_input($data);
+                                            
+                                            $data = array(
+                                                'name'          => 'added_on',
+                                                'id'            => 'added_on',
+                                                'type'            => 'hidden',
+                                                'value'         => (!empty($userdata[0])) ? $userdata[0]->added_on: '',
+                                                );
+
+                                            echo form_input($data);
+                                            
+                                            $data = array(
+                                                'name'          => 'email_id',
+                                                'id'            => 'email_id',
+                                                'value'         => (!empty($userdata[0])) ? $userdata[0]->user_email_id: '',
                                                 'maxlength'     => '45',
                                                 "placeholder"   => "Enter user email Id",
                                                 "class"         => "col-xs-10 col-sm-5 mandatory-field"
@@ -174,9 +219,9 @@
                                     <div class="col-sm-9">
                                         <?php
                                             $data = array(
-                                                'name'          => 'user_phone_number',
-                                                'id'            => 'user_phone_number',
-                                                'value'         => (!empty($user_phone_number)) ? $user_phone_number : '',
+                                                'name'          => 'phone_number',
+                                                'id'            => 'phone_number',
+                                                'value'         => (!empty($userdata[0])) ? $userdata[0]->user_phone_number: '',
                                                 'maxlength'     => '45',
                                                 "placeholder"   => "Enter user phone number",
                                                 "onKeyUp"       => "javascript:return check_isnumeric(event,this,0);",

@@ -197,7 +197,7 @@
 											<div class="space-6"></div>
 											<p> Enter your details to begin: </p>
 
-											<form id = "register_user" name = "register_user">
+											<form id = "register_user_login" name = "register_user_login">
                                                                                             <div class = "error_show"></div>
 												<fieldset>
                                                                                                     
@@ -221,69 +221,61 @@
                                                                                                             </span>
                                                                                                     </label>
 
-													<label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control mandatory-field" placeholder="Password" id="passward" name="passward"/>
-															<i class="ace-icon fa fa-lock"></i>
-                                                                                                                        <span class="help-inline">
-                                                                                                                            <span class="middle input-text-error" id="passward_errorlabel"></span>
-                                                                                                                        </span> 
-														</span>
-													</label>
+                                                                                                    <label class="block clearfix">
+                                                                                                            <span class="block input-icon input-icon-right">
+                                                                                                                    <input type="password" class="form-control mandatory-field" placeholder="Password" id="passward" name="passward"/>
+                                                                                                                    <i class="ace-icon fa fa-lock"></i>
+                                                                                                                    <span class="help-inline">
+                                                                                                                        <span class="middle input-text-error" id="passward_errorlabel"></span>
+                                                                                                                    </span> 
+                                                                                                            </span>
+                                                                                                    </label>
                                                                                                     
-													<label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control mandatory-field" placeholder="Repeat password" id="repeat_passward" name="repeat_passward"/>
-															<i class="ace-icon fa fa-retweet"></i>
-                                                                                                                        <span class="help-inline">
-                                                                                                                            <span class="middle input-text-error" id="repeat_passward_errorlabel"></span>
-                                                                                                                        </span> 
-														</span>
-													</label>
+                                                                                                    <label class="block clearfix">
+                                                                                                            <span class="block input-icon input-icon-right">
+                                                                                                                    <input type="password" class="form-control mandatory-field" placeholder="Repeat password" id="repeat_passward" name="repeat_passward"/>
+                                                                                                                    <i class="ace-icon fa fa-retweet"></i>
+                                                                                                                    <span class="help-inline">
+                                                                                                                        <span class="middle input-text-error" id="repeat_passward_errorlabel"></span>
+                                                                                                                    </span> 
+                                                                                                            </span>
+                                                                                                    </label>
                                                                                                         
-                                                                                                        <label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input type="email" class="form-control mandatory-field" placeholder="Email"  id="email_id" name="email_id"/>
-															<i class="ace-icon fa fa-envelope"></i>
-                                                                                                                        <span class="help-inline">
-                                                                                                                            <span class="middle input-text-error" id="email_id_errorlabel"></span>
-                                                                                                                        </span> 
-														</span>
-													</label>
+                                                                                                    <label class="block clearfix">
+                                                                                                            <span class="block input-icon input-icon-right">
+                                                                                                                    <input type="email" class="form-control mandatory-field" placeholder="Email"  id="email_id" name="email_id"/>
+                                                                                                                    <i class="ace-icon fa fa-envelope"></i>
+                                                                                                                    <span class="help-inline">
+                                                                                                                        <span class="middle input-text-error" id="email_id_errorlabel"></span>
+                                                                                                                    </span> 
+                                                                                                            </span>
+                                                                                                    </label>
                                                                                                     
-                                                                                                        <label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input type="mobile" class="form-control mandatory-field" placeholder="Mobile number" id="phone_number" name="phone_number"/>
-															<i class="ace-icon fa fa-phone"></i>
-                                                                                                                        <span class="help-inline">
-                                                                                                                            <span class="middle input-text-error" id="phone_number_errorlabel"></span>
-                                                                                                                        </span> 
-														</span>
-													</label>
-                                                                                                        <!--
-													<label class="block">
-														<input type="checkbox" class="ace" />
-														<span class="lbl">
-															I accept the
-															<a href="#">User Agreement</a>
-														</span>
-													</label> --> 
+                                                                                                    <label class="block clearfix">
+                                                                                                            <span class="block input-icon input-icon-right">
+                                                                                                                    <input type="mobile" class="form-control mandatory-field" placeholder="Mobile number" id="phone_number" name="phone_number"/>
+                                                                                                                    <i class="ace-icon fa fa-phone"></i>
+                                                                                                                    <span class="help-inline">
+                                                                                                                        <span class="middle input-text-error" id="phone_number_errorlabel"></span>
+                                                                                                                    </span> 
+                                                                                                            </span>
+                                                                                                    </label>
+                                                                                                    
+                                                                                                    <div class="space-12"></div>
 
-													<div class="space-12"></div>
+                                                                                                    <div class="clearfix">
+                                                                                                            <button type="reset" class="width-30 pull-left btn btn-sm">
+                                                                                                                    <i class="ace-icon fa fa-refresh"></i>
+                                                                                                                    <span class="bigger-110">Reset</span>
+                                                                                                            </button>
 
-													<div class="clearfix">
-														<button type="reset" class="width-30 pull-left btn btn-sm">
-															<i class="ace-icon fa fa-refresh"></i>
-															<span class="bigger-110">Reset</span>
-														</button>
+                                                                                                            <button  type="submit" class="width-65 pull-right btn btn-sm btn-success">
+                                                                                                                    <span class="bigger-110">Register</span>
 
-														<button  type="submit" class="width-65 pull-right btn btn-sm btn-success">
-															<span class="bigger-110">Register</span>
-
-															<i class="ace-icon fa fa-arrow-right icon-on-right"></i>
-														</button>
-													</div>
-												</fieldset>
+                                                                                                                    <i class="ace-icon fa fa-arrow-right icon-on-right"></i>
+                                                                                                            </button>
+                                                                                                    </div>
+                                                                                            </fieldset>
 											</form>
 										</div>
 

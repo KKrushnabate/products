@@ -57,7 +57,7 @@
 	</head>
 
 	<body class="no-skin">
-		<input type="hidden" value="<?php echo base_url(); ?>" id="baseUrl">
+		<input type="hidden" value="<?php echo site_url(); ?>" id="baseUrl">
 		<div id="navbar" class="navbar navbar-default          ace-save-state">
 			<div class="navbar-container ace-save-state" id="navbar-container">
 				<button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">

@@ -4,20 +4,16 @@
 			<ul class="breadcrumb">
 				<li>
 					<i class="ace-icon fa fa-home home-icon"></i>
-					<a href="#">Home</a>
+					<a href="<?php echo site_url();?>">Home</a>
 				</li>
-
-				<li>
-					<a href="#">Vendor</a>
-				</li>
-				<li class="active">Vendor Lists</li>
+				<li class="active">Users</li>
 			</ul><!-- /.breadcrumb -->
 
 			<div class="nav-search" id="nav-search">
 				<form class="form-search">
 					<span class="input-icon">
-						<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
-						<i class="ace-icon fa fa-search nav-search-icon"></i>
+                                            <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                                            <i class="ace-icon fa fa-search nav-search-icon"></i>
 					</span>
 				</form>
 			</div><!-- /.nav-search -->
@@ -27,7 +23,7 @@
 			
 			<div class="page-header">
 				<h1>
-					Vendor List
+					Users
 				</h1>
 			</div><!-- /.page-header -->
 
@@ -60,14 +56,11 @@
 													<span class="lbl"></span>
 												</label>
 											</th>
-											<th>Driver Name</th>
+											<th>User Full Name</th>
+                                                                                        <th>User Name</th>
 											<th>Mobile Number</th>
-											<th>Mobile Number2</th>
-											<th>Address</th>
-											<th>DOB</th>
-											<th>Licence No</th>
-											<th></th>
-
+                                                                                        <th>Email Address</th>
+                                                                                        <th>Action</th>
 										</tr>
 									</thead>
 
@@ -81,60 +74,24 @@
 													</label>
 												</td>
 
-												<td><?php echo $val->driver_fname." ".$val->driver_lname; ?></td>
-												<td><?php echo $val->driver_mobno; ?></td>
-												<td><?php echo $val->driver_mobno1; ?></td>
-												<td><?php echo $val->driver_add; ?></td>
-												<td><?php echo $val->driver_bdate; ?></td>
-												<td><?php echo $val->driver_licno; ?></td>
+												<td><?php echo $val->user_full_name; ?></td>
+												<td><?php echo $val->user_name; ?></td>
+												<td><?php echo $val->user_phone_number; ?></td>
+												<td><?php echo $val->user_email_id; ?></td>
 											
-
-
 												<td>
 													<div class="hidden-sm hidden-xs action-buttons">
-														
-
-														<a class="green" href="<?php echo base_url().'driver/update/'.$val->driver_id; ?>">
+														<a class="green" href="<?php echo site_url('/user/userMaster/'.$val->user_id); ?>">
 															<i class="ace-icon fa fa-pencil bigger-130"></i>
 														</a>
 
-														<a class="red delete" href="#" id="<?php echo $val->driver_id; ?>">
+														<a class="red delete" href="<?php echo site_url('/user/userDelete/'.$val->user_id); ?>" id="<?php echo $val->user_id; ?>">
 															<i class="ace-icon fa fa-trash-o bigger-130"></i>
 														</a>
-													</div>
-
-													<div class="hidden-md hidden-lg">
-														<div class="inline pos-rel">
-															<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-																<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-															</button>
-
-															<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-																<li>
-																	<a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-																		<span class="blue">
-																			<i class="ace-icon fa fa-search-plus bigger-120"></i>
-																		</span>
-																	</a>
-																</li>
-
-																<li>
-																	<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-																		<span class="green">
-																			<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																		</span>
-																	</a>
-																</li>
-
-																<li>
-																	<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-																		<span class="red">
-																			<i class="ace-icon fa fa-trash-o bigger-120"></i>
-																		</span>
-																	</a>
-																</li>
-															</ul>
-														</div>
+                                                                                                            <?php if($val->approved_by_admin == 0 ){ ?>
+                                                                                                                <a class="" href="<?php echo site_url('/user/useractivate/'.$val->user_id); ?>" id="inactive_<?php echo $val->user_id; ?>">
+															<i class="ace-icon fa fa-check-circle-o bigger-130"></i>
+                                                                                                                </a><?php } ?>
 													</div>
 												</td>
 											</tr>
