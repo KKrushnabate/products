@@ -382,7 +382,6 @@ $(document).ready(function () {
         var timeout = "10";
         
         if (formId && $.inArray( formId, bulkfrm)) {
-            
             var alert_msg = "";
             var fields_nf = [];
             var obj_mand  = $('#' + formId).find(":input.mandatory-field");
@@ -559,14 +558,15 @@ function ajaxCall(id, postData, method, sucessCallBack, failCallBack, timeout) {
         method: 'POST',
         crossDomain: true,
         data: data,
-        dataType: 'json',
         beforeSend: function (xhr) {
             $('.icon'+id).addClass('ace-icon fa fa-spinner fa-spin orange bigger-125');
         },
         success: function (data) {
-            console.log(data);
-            if(data.success == true) {
+            var arrErrorMessages = jQuery.parseJSON(data);
+                
+            if(arrErrorMessages['success'] == true) {
                 location.href = obj['redirect'];
+                
             /*$('.icon'+id).removeClass('ace-icon fa fa-spinner fa-spin orange bigger-125');
             $('.alert-box').html('<div class="alert alert-block alert-success">\
                     <button type="button" class="close" data-dismiss="alert">\
@@ -580,11 +580,8 @@ function ajaxCall(id, postData, method, sucessCallBack, failCallBack, timeout) {
                 </div>');
                 $("#"+id)[0].reset();*/
             } else {
-                //alert(data.stringify);
-                var arrErrorMessages = jQuery.parseJSON(JSON.stringify(data));
-                
                 if(arrErrorMessages["error_message"].length > 0){
-                    $("#"+id).find(".error_show").html(arrErrorMessages['error_message'].join("\n"));
+                    $("#"+id).find(".error_show").html(arrErrorMessages['error_message'].join("<br/>"));
                 }
                 /*$('.icon'+id).removeClass('ace-icon fa fa-spinner fa-spin orange bigger-125');
                 $('.alert-box').html('<div class="alert alert-block alert-danger">\
