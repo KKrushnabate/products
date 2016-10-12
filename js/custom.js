@@ -4,14 +4,14 @@ var array = [
         {name: "register_user_login", value: baseUrl + "/user/adduser",redirect:baseUrl + "/user/login"},
         {name: "usermaster", value: baseUrl + "/user/adduser",redirect:baseUrl + "/user/userList"},
 	{name: "currencymaster", value: baseUrl + "/currency/addCurrency",redirect:baseUrl + "/currency/currencyList"},
-        
-	{name: "vehicleList", value: baseUrl + "vehicle/vehicleDelete"},
-	{name: "vehicle_update", value: baseUrl + "vehicle/vehicleUpdate"},
-	{name: "drivermaster", value: baseUrl + "driver/driverMasterSubmit"},
-	{name: "driverList", value: baseUrl + "driver/driverDelete"},
-	{name: "driver_update", value: baseUrl + "driver/driverUpdate"},
-	{name: "vendormaster", value: baseUrl + "vendor/addvendor"},
-	{name: "vendorList", value: baseUrl + "vendor/vendorDelete"},
-	{name: "vendor_update", value: baseUrl + "vendor/vendorUpdate"}
+	{name: "equivalentprofile", value: baseUrl + "eq_profile/addeq_profile",redirect:baseUrl + "/eq_profile/eq_profileList"},
+	{name: "equivalentprofile", value: baseUrl + "eq_profile/eq_profileMaster",redirect:baseUrl + "/eq_profile/currencyList"},
+        {name: "equivalentprofile", value: baseUrl + "eq_profile/eq_profileMaster",redirect:baseUrl + "/eq_profile/currencyList"},
+        {name: "equivalentprofile", value: baseUrl + "eq_profile/eq_profileMaster",redirect:baseUrl + "/eq_profile/currencyList"},
+        {name: "equivalentprofile", value: baseUrl + "eq_profile/eq_profileMaster",redirect:baseUrl + "/eq_profile/currencyList"},
+        {name: "equivalentprofile", value: baseUrl + "eq_profile/eq_profileMaster",redirect:baseUrl + "/eq_profile/currencyList"},
+        {name: "equivalentprofile", value: baseUrl + "eq_profile/eq_profileMaster",redirect:baseUrl + "/eq_profile/currencyList"},
+        {name: "equivalentprofile", value: baseUrl + "eq_profile/eq_profileMaster",redirect:baseUrl + "/eq_profile/currencyList"},
+        {name: "equivalentprofile", value: baseUrl + "eq_profile/eq_profileMaster",redirect:baseUrl + "/eq_profile/currencyList"}
 ];
 
