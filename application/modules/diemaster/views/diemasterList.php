@@ -23,7 +23,7 @@
 			
 			<div class="page-header">
 				<h1>
-					Currency
+					Dia Master
 				</h1>
 			</div><!-- /.page-header -->
 
@@ -33,13 +33,12 @@
 					<!-- PAGE CONTENT BEGINS -->
 					<div class="row">
 						<div class="col-xs-12">
-							<h3 class="header smaller lighter blue"></h3>
 
 							<div class="clearfix">
 								<div class="pull-right tableTools-container"></div>
 							</div>
 							<div class="table-header">
-								Results for "Latest Registered Domains"
+								Die List
 							</div>
 
 							<!-- div.table-responsive -->
@@ -50,24 +49,30 @@
 								<table id="dynamic-table" class="table table-striped table-bordered table-hover">
 									<thead>
 										<tr>
-											<th>Currency Name</th>
-											<th>Currency Description</th>
-											<th>Currency Sign</th>
-											<th>Round Value</th>
-											<th>Purchase Rate</th>
-											<th>Sales Rate</th>
+											<th>Die Id</th>
+											<th>Product Type</th>
+											<th>ID</th>
+											<th>OD</th>
+											<th>THK</th>
+											<th>Material</th>
+                                                                                        <th>Remark</th>
+                                                                                        <th>ShoulderTHK</th>
+                                                                                        <th>TotalTHK</th>
 										</tr>
 									</thead>
 
 									<tbody>
 										<?php foreach ($list as $val): ?>
 											<tr>
-												<td><?php echo $val->CurrencyName; ?></td>
-												<td><?php echo $val->CurrencyDescription; ?></td>
-												<td><?php echo $val->CurrencySign; ?></td>
-												<td><?php echo $val->RoundValue; ?></td>
-												<td><?php echo $val->PurchaseRate; ?></td>
-												<td><?php echo $val->SalesRate; ?></td>
+												<td><?php echo $val->die_id; ?></td>
+												<td><?php echo $val->ProductType; ?></td>
+												<td><?php echo $val->ID; ?></td>
+												<td><?php echo $val->OD; ?></td>
+												<td><?php echo $val->THK; ?></td>
+												<td><?php echo $val->Material; ?></td>
+                                                                                                <td><?php echo $val->Remark; ?></td>
+												<td><?php echo $val->ShoulderTHK; ?></td>
+												<td><?php echo $val->TotalTHK; ?></td>
 											</tr>
 										<?php endforeach; ?>
 									</tbody>

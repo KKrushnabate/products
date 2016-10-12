@@ -11,6 +11,7 @@ class Dashboard extends MX_Controller {
     }
 
     public function index(){
+        //print_r($this->session->userdata());
         $this->header->index();
         $this->load->view('dashboard');
         $this->footer->index();

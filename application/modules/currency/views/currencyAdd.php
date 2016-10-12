@@ -4,7 +4,7 @@
             <ul class="breadcrumb">
                 <li>
                     <i class="ace-icon fa fa-home home-icon"></i>
-                    <a href="#">Home</a>
+                    <a href="<?php echo site_url();?>">Home</a>
                 </li>
 
                 <li>
@@ -61,10 +61,9 @@
                                         'value'         => (!empty($currencydata[0])) ? $currencydata[0]->CurrencyName: '',
                                         'maxlength'     => '45',
                                         "placeholder"   => "Enter Currency Name",
-                                        "readonly"      => "readonly",
                                         "class"         => "col-xs-10 col-sm-5 mandatory-field"
                                         );
-
+                                    if(!empty($currencydata[0]->SrNo)){$data["readonly"]      = "readonly";}
                                         echo form_input($data);
                                     ?>
                                         <span class="help-inline col-xs-12 col-sm-7">
@@ -84,10 +83,9 @@
                                         'value'         => (!empty($currencydata[0])) ? $currencydata[0]->CurrencyDescription: '',
                                         'maxlength'     => '100',
                                         "placeholder"   => "Currency Description",
-                                        "readonly"      => "readonly",
                                         "class"         => "col-xs-10 col-sm-5 mandatory-field"
                                         );
-
+                                        if(!empty($currencydata[0]->SrNo)){$data["readonly"]      = "readonly";}
                                         echo form_input($data);
                                     ?>
                                         <span class="help-inline col-xs-12 col-sm-7">
@@ -107,10 +105,9 @@
                                         'value'         => (!empty($currencydata[0])) ? $currencydata[0]->CurrencySign: '',
                                         'maxlength'     => '45',
                                         "placeholder"   => "Currency Sign",
-                                        "readonly"      => "readonly",
                                         "class"         => "col-xs-10 col-sm-5 mandatory-field"
                                         );
-
+                                        if(!empty($currencydata[0]->SrNo)){$data["readonly"]      = "readonly";}
                                         echo form_input($data);
                                     ?>
                                         <span class="help-inline col-xs-12 col-sm-7">

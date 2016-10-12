@@ -95,4 +95,13 @@ define("ROLE_MASTER", "tbl_role_master");
 define("MENU_MASTER", "tbl_menu_master");
 define("MASTERCURRENCY", "Currency");
 define("MASTERDIEMASTER", "DieMasterNew");
+define("EQ_PROFILE", "eq_profile");
+define("FACTOR", "Factor");
+define("MATERIALFARMULAMASTER", "MaterialFormulaMaster");
+define("MATERIALLISTNEW", "MaterialListNew");
+define("METALPLATEMASTER", "MetalPlateMaster");
+define("METALTHICKNESS", "MetalThickness");
+define("PRODUCTMASTER", "ProductMaster");
+define("RATECHARGE", "RateChart");
+define("VPRODUCTMASTER", "VProductMaster");
 /*******************END DB CONSTANTS*************************/

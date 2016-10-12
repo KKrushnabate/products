@@ -24,7 +24,7 @@
 			<div class="page-header">
 				<h1>
 					Currency
-				</h1>
+				</h1><div><h2><?php echo $this->session->flashdata('successMsg'); ?></h2> </div>
 			</div><!-- /.page-header -->
 
 			<div class="row">
@@ -33,13 +33,16 @@
 					<!-- PAGE CONTENT BEGINS -->
 					<div class="row">
 						<div class="col-xs-12">
+                                                    <button class="btn btn-info test" type="submit">
+                                                        <a href="<?php echo site_url('currency/currencyMaster'); ?>"><i class="fa fa-plus"></i>Add Currency </a>
+                                                    </button>
 							<h3 class="header smaller lighter blue"></h3>
 
 							<div class="clearfix">
 								<div class="pull-right tableTools-container"></div>
 							</div>
 							<div class="table-header">
-								Results for "Latest Registered Domains"
+								Currency
 							</div>
 
 							<!-- div.table-responsive -->

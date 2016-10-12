@@ -5,6 +5,7 @@ class Footer extends MX_Controller {
 	function __construct() {
 	    parent::__construct();
             $this->view_data['company_details'] = $this->config->item('company_details');
+            $this->view_data['controllername'] = $this->router->fetch_class();
 	}
 
 	public function index()

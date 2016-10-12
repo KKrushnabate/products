@@ -5,6 +5,7 @@ class User extends MX_Controller {
     function __construct() {
         parent::__construct();
         $this->view_data['company_details'] = $this->config->item('company_details');
+        $this->view_data['controllername'] = $this->router->fetch_class();
         $this->load->helper('form');
         $this->load->module('header/header');
         $this->load->module('footer/footer');
@@ -73,18 +74,18 @@ class User extends MX_Controller {
 	 
     public function adduser()
     {
-        
+        $userdata = $this->session->userdata('logged_in');
         $user_id =  isset($_POST['user_id']) ? $_POST['user_id'] : '';
         $fullname = isset($_POST['fullname']) ? $_POST['fullname'] : '';
         $resusername = isset($_POST['resusername']) ? $_POST['resusername'] : '';
-        $passward = isset($_POST['passward']) ?$_POST['passward'] : '';
-        $repeat_passward = isset($_POST['repeat_passward']) ?  $_POST['repeat_passward']: '';
+        $passward = isset($_POST['password']) ?$_POST['password'] : '';
+        $repeat_passward = isset($_POST['repeat_password']) ?  $_POST['repeat_password']: '';
         $email_id = isset($_POST['email_id']) ?$_POST['email_id']: '';
         $phone_number = isset($_POST['phone_number']) ?$_POST['phone_number']: '';
-        $added_by = isset($_POST['added_by']) ?$_POST['added_by']: 0;
-        $added_on = isset($_POST['added_on']) ?$_POST['added_on']: date("Y:m:d H:i:s");
+        $added_by = ( isset($_POST['added_by']) || ($_POST['added_by']!= '') || !empty($_POST['added_by'])) ?$_POST['added_by']: isset($userdata['userid']) ? 0 : '' ;
+        $added_on = (isset($_POST['added_by']) || ($_POST['added_on'] != '') || !empty($_POST['added_on'])) ? $_POST['added_on']: date("Y:m:d H:i:s");
         $allowed = isset($_POST['approved_by_admin']) ? $_POST['approved_by_admin']: '0';
-        $modified_by = isset($_POST['user_id']) ? $_POST['user_id'] : '';
+        $modified_by = isset($userdata['userid']) ? $userdata['userid'] : 0;
 
         $data =array(
             'user_id' => $user_id,
@@ -112,7 +113,7 @@ class User extends MX_Controller {
         
         $response = array();
         if($user_id){
-            $response['success_message'][] = "Added Successfully.";
+            $this->session->set_flashdata('successMsg', "Added Successfully.");
             $response['success'] = true;
         }else{
             $response['error_message'][] = "Please try again Later.";
@@ -133,17 +134,22 @@ class User extends MX_Controller {
         $this->footer->index();
     }
 
-    public function userDelete($user_id){
-    $user_table =  USER_MASTER;
-    $resultMaster = $this->helper_model->delete($user_table,'user_id',$user_id);
-    if($resultMaster != false){
-            $response['success'] = true;
-            $response['successMsg'] = "Record Deleted";
-    }else{
-            $response['success'] = false;
-            $response['successMsg'] = "Something wrong please try again";
+    public function delete($user_id){
+        $user_table =  USER_MASTER;
+        $resultMaster = $this->helper_model->delete($user_table,'user_id',$user_id);
+        if($resultMaster != false){
+                $this->session->set_flashdata('successMsg', "Record Deleted");
+                $response['success'] = true;
+        }else{
+                $response['error_message'][] = "Something wrong please try again";
+                $response['success'] = false;
+        }
+        echo json_encode($response);exit();
     }
-    echo json_encode($response);
+    
+    public function logout(){
+        $this->session->unset_userdata('logged_in');
+        redirect('/user/login');
+        
     }
-
 }

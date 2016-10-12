@@ -223,7 +223,7 @@
 
                                                                                                     <label class="block clearfix">
                                                                                                             <span class="block input-icon input-icon-right">
-                                                                                                                    <input type="password" class="form-control mandatory-field" placeholder="Password" id="passward" name="passward"/>
+                                                                                                                    <input type="password" class="form-control mandatory-field" placeholder="Password" id="passward" name="password"/>
                                                                                                                     <i class="ace-icon fa fa-lock"></i>
                                                                                                                     <span class="help-inline">
                                                                                                                         <span class="middle input-text-error" id="passward_errorlabel"></span>
@@ -233,7 +233,7 @@
                                                                                                     
                                                                                                     <label class="block clearfix">
                                                                                                             <span class="block input-icon input-icon-right">
-                                                                                                                    <input type="password" class="form-control mandatory-field" placeholder="Repeat password" id="repeat_passward" name="repeat_passward"/>
+                                                                                                                    <input type="password" class="form-control mandatory-field" placeholder="Repeat password" id="repeat_passward" name="repeat_password"/>
                                                                                                                     <i class="ace-icon fa fa-retweet"></i>
                                                                                                                     <span class="help-inline">
                                                                                                                         <span class="middle input-text-error" id="repeat_passward_errorlabel"></span>

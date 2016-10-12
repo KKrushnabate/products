@@ -5,6 +5,7 @@ class Diemaster extends MX_Controller {
 	function __construct() {
 	    parent::__construct();
             $this->view_data['company_details'] = $this->config->item('company_details');
+            $this->view_data['controllername'] = $this->router->fetch_class();
             $this->load->helper('form');
             $this->load->module('header/header');
             $this->load->module('footer/footer');
@@ -16,9 +17,9 @@ class Diemaster extends MX_Controller {
         }
  	public function diemasterList(){
 		$diemastertable =  MASTERDIEMASTER;
- 		$filds = "*";
+ 		$filds = 'die_id, ProductType,ID,OD,THK,Material,Remark,ShoulderTHK,TotalTHK';
  		$this->view_data['list'] = $this->diemaster_model->getDiemasterList($filds,$diemastertable);
-		$this->header->index();
+                $this->header->index();
 		$this->load->view('diemasterList', $this->view_data);
 		$this->footer->index();
  	}

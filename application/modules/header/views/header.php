@@ -57,7 +57,8 @@
 	</head>
 
 	<body class="no-skin">
-		<input type="hidden" value="<?php echo site_url(); ?>" id="baseUrl">
+		<input type="hidden" value="<?php echo site_url(); ?>" id="baseUrl" name="baseUrl">
+                <input type="hidden" value="<?php echo $controllername; ?>" id="controllername" name="controllername">
 		<div id="navbar" class="navbar navbar-default          ace-save-state">
 			<div class="navbar-container ace-save-state" id="navbar-container">
 				<button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
@@ -365,7 +366,7 @@
 								<li class="divider"></li>
 
 								<li>
-									<a href="#">
+									<a href="<?php echo site_url('user/logout'); ?>">
 										<i class="ace-icon fa fa-power-off"></i>
 										Logout
 									</a>
@@ -445,11 +446,83 @@
 						<b class="arrow"></b>
 					</li>
                                         
-					<li class="">
+                                        <li class="active">
+						<a href="<?php echo site_url("/eq_profile/index"); ?>">
+							<i class="menu-icon fa fa-tachometer"></i>
+							<span class="menu-text"> Equivalant Profile </span>
+						</a>
+						<b class="arrow"></b>
+					</li>
+                                        
+                                        <li class="active">
+						<a href="<?php echo site_url("/factor/index"); ?>">
+							<i class="menu-icon fa fa-tachometer"></i>
+							<span class="menu-text"> Equivalant Profile </span>
+						</a>
+						<b class="arrow"></b>
+					</li>
+                                        
+                                        <li class="active">
+						<a href="<?php echo site_url("/material_farmula/index"); ?>">
+							<i class="menu-icon fa fa-tachometer"></i>
+							<span class="menu-text"> Material Farmula </span>
+						</a>
+						<b class="arrow"></b>
+					</li>
+                                        
+                                        <li class="active">
+						<a href="<?php echo site_url("/material/index"); ?>">
+							<i class="menu-icon fa fa-tachometer"></i>
+							<span class="menu-text"> Material</span>
+						</a>
+						<b class="arrow"></b>
+					</li>
+                                        
+                                        <li class="active">
+						<a href="<?php echo site_url("/metal_planet/index"); ?>">
+							<i class="menu-icon fa fa-tachometer"></i>
+							<span class="menu-text"> Metal Planet </span>
+						</a>
+						<b class="arrow"></b>
+					</li>
+                                        
+                                        <li class="active">
+						<a href="<?php echo site_url("/metal_thickness/index"); ?>">
+							<i class="menu-icon fa fa-tachometer"></i>
+							<span class="menu-text"> Metal Thickness</span>
+						</a>
+						<b class="arrow"></b>
+					</li>
+                                        
+                                        <li class="active">
+						<a href="<?php echo site_url("/product/index"); ?>">
+							<i class="menu-icon fa fa-tachometer"></i>
+							<span class="menu-text"> Product</span>
+						</a>
+						<b class="arrow"></b>
+					</li>
+                                        
+                                        <li class="active">
+						<a href="<?php echo site_url("/rate/index"); ?>">
+							<i class="menu-icon fa fa-tachometer"></i>
+							<span class="menu-text"> Rate</span>
+						</a>
+						<b class="arrow"></b>
+					</li>
+                                        
+					<li class="active">
+						<a href="<?php echo site_url("/product_farmula/index"); ?>">
+							<i class="menu-icon fa fa-tachometer"></i>
+							<span class="menu-text"> Product Farmula</span>
+						</a>
+						<b class="arrow"></b>
+					</li>
+                                        
+                                        <li class="">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-desktop"></i>
 							<span class="menu-text">
-								Product
+								User
 							</span>
 
 							<b class="arrow fa fa-angle-down"></b>
@@ -459,28 +532,9 @@
 
 						<ul class="submenu">
 							<li class="">
-								<a href="">
+								<a href="<?php echo site_url("/user/userList"); ?>">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Currency
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-							<li class="">
-								<a href="<?php echo site_url("/vehicle/newVehicle"); ?>">
-									<i class="menu-icon fa fa-caret-right"></i>
-
-									Add Vehicle
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="<?php echo base_url(); ?>vehicle/vehicleList">
-									<i class="menu-icon fa fa-caret-right"></i>
-
-									Vehicle List
+									Admin User
 								</a>
 
 								<b class="arrow"></b>
@@ -494,3 +548,4 @@
 					<i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
 				</div>
 			</div>
+                        
