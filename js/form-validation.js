@@ -460,34 +460,25 @@ $(document).ready(function () {
     $(document).on('click','.delete', function(e){
         e.preventDefault();
         if(confirm("Are you sure you want to delete!")){
-
-            var formId  = $('.form').attr('id');
-            var id = $(this).attr('id');
-            
-            var obj = array.filter(function(obj){
-                return obj.name === formId
-            })[0];
-
-            var uri = obj['value'];
-
-            jobject = {
-                'id' : id
-            }
-
-            var point = $(this);
-            
+           var controllername   = $("#controllername").val();
+           
+           var delete_id = $(this).prop("id");
+           var deleteid = delete_id.split("_")[1];
+           var uri = $("#baseUrl").val()+"/"+controllername+"/delete/"+deleteid;
             $.ajax({
                 url: uri,
                 method: 'POST',
                 crossDomain: true,
-                data: jobject,
-                dataType: 'json',
-                beforeSend: function (xhr) {
-                    //$('.icon'+id).addClass('ace-icon fa fa-spinner fa-spin orange bigger-125');
-                },
                 success: function (data) {
-                    point.parent().parent().parent().remove();
-                    alert(data.successMsg);
+                    var arrErrorMessages = jQuery.parseJSON(data);
+                    alert(arrErrorMessages['success']);
+                    if(arrErrorMessages['success'] == true) {
+                        location.reload();
+                    } else {
+                        if(arrErrorMessages["error_message"].length > 0){
+                        $("#deletemessage").html(arrErrorMessages['error_message'].join("<br/>"));
+                }
+            }
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
                     console.log(thrownError);
