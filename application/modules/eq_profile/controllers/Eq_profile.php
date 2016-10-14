@@ -10,13 +10,28 @@ class Eq_profile extends MX_Controller {
             $this->load->module('header/header');
             $this->load->module('footer/footer');
             $this->load->model('eq_profile/eq_profile_model');
+            $this->load->model('profiledata/profiledata_model');
             $this->load->model('helper/helper_model');
+            
+            //get profile data 
+            
+            $eqprofile_table =  PROFILEDATA;
+            $filds = 'ProfileName,ProfileId';
+            $profiledata = $this->profiledata_model->getProfiledataList($filds,$eqprofile_table);
+            $selectProfiledata = array();
+            if(!empty($profiledata)){
+                foreach($profiledata as $k =>$v){
+                       $selectProfiledata[$v->ProfileId] = $v->ProfileName;
+                }
+            }
+            $this->view_data['profilelist'] = $selectProfiledata;
 	}
+        
         public function  index(){
             $this->eq_profileList();
         }
-	public function eq_profileMaster($eq_profile_id = ''){
-            
+        
+	public function eq_profileMaster($eq_profile_id = ''){    
             if($eq_profile_id != ''){
                 $tableName = EQ_PROFILE;
                 $select = "*";
