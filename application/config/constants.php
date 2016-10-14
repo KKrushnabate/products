@@ -104,4 +104,5 @@ define("METALTHICKNESS", "MetalThickness");
 define("PRODUCTMASTER", "ProductMaster");
 define("RATECHARGE", "RateChart");
 define("VPRODUCTMASTER", "VProductMaster");
+define("PROFILEDATA", "ProfileHiraData");
 /*******************END DB CONSTANTS*************************/
