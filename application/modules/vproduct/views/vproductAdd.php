@@ -4,13 +4,13 @@
             <ul class="breadcrumb">
                 <li>
                     <i class="ace-icon fa fa-home home-icon"></i>
-                    <a href="#">Home</a>
+                    <a href="<?php echo site_url();?>">Home</a>
                 </li>
 
                 <li>
-                    <a href="<?php echo site_url('/factor/index'); ?>">Factor</a>
+                    <a href="<?php echo site_url('/vproduct/index'); ?>">VProduct</a>
                 </li>
-                <li class="active">Add Factor</li>
+                <li class="active">Add VProduct</li>
             </ul><!-- /.breadcrumb -->
 
             <div class="nav-search" id="nav-search">
@@ -27,7 +27,7 @@
 
             <div class="page-header">
                 <h1>
-                    Add Factor
+                    Add VProduct
                 </h1>
             </div><!-- /.page-header -->
 
@@ -36,129 +36,238 @@
                     <div class="alert-box"></div>
                         <!-- PAGE CONTENT BEGINS -->
                             <?php
-                                $strFormId = "factormaster";
+                                $strFormId = "vproductmaster";
                                 $arrAttributers = array("class"=>"form-horizontal", "role"=>"form","id"=>$strFormId);
                                 echo form_open('',$arrAttributers); 
                             ?>
                         
                             <div class="form-group">
-                                <label class="col-sm-2 no-padding-right" for="form-field-2">OD from </label>
+                                <label class="col-sm-2 no-padding-right" for="form-field-2">Product Name*</label>
+
                                 <div class="col-sm-9">
                                     <?php 
                                     $data = array(
                                         'name'          => 'SrNo',
                                         'id'            => 'SrNo',
                                         'type'            => 'hidden',
-                                        'value'         => (!empty($factordata[0])) ? $factordata[0]->SrNo: '',
+                                        'value'         => (!empty($vProductdata[0])) ? $vProductdata[0]->SrNo: '',
                                         );
 
                                     echo form_input($data);
                                         
                                     $data = array(
-                                        'name'          => 'ODFrom',
-                                        'id'            => 'ODFrom',
-                                        'value'         => (!empty($factordata[0])) ? $factordata[0]->ODFrom: '',
+                                        'name'          => 'ProductName',
+                                        'id'            => 'ProductName',
+                                        'value'         => (!empty($vProductdata[0])) ? $vProductdata[0]->ProductName: '',
                                         'maxlength'     => '45',
-                                        "placeholder"   => "Enter OD from ",
+                                        "placeholder"   => "Enter Product Name",
                                         "class"         => "col-xs-10 col-sm-5 mandatory-field"
                                         );
-
+                                   
                                         echo form_input($data);
                                     ?>
                                         <span class="help-inline col-xs-12 col-sm-7">
-                                                <span class="middle input-text-error" id="ODFrom_errorlabel"></span>
+                                                <span class="middle input-text-error" id="ProductName_errorlabel"></span>
                                         </span>
                                 </div>
                             </div>
                                         
                             <div class="form-group">
-                                <label class="col-sm-2 no-padding-right" for="form-field-2">ODTo*</label>
-
+                                <label class="col-sm-2 no-padding-right" for="form-field-2">Charge Type*</label>
                                 <div class="col-sm-9">
                                     <?php 
                                     $data = array(
-                                        'name'          => 'ODTo',
-                                        'id'            => 'ODTo',
-                                        'value'         => (!empty($factordata[0])) ? $factordata[0]->ODTo: '',
+                                        'name'          => 'ChartType',
+                                        'id'            => 'ChartType',
+                                        'value'         => (!empty($vProductdata[0])) ? $vProductdata[0]->ChartType: '',
                                         'maxlength'     => '100',
-                                        "placeholder"   => "ODTo",
+                                        "placeholder"   => "Chart type",
                                         "class"         => "col-xs-10 col-sm-5 mandatory-field"
                                         );
-
                                         echo form_input($data);
                                     ?>
                                         <span class="help-inline col-xs-12 col-sm-7">
-                                                <span class="middle input-text-error" id="ODTo_errorlabel"></span>
+                                                <span class="middle input-text-error" id="ChartType_errorlabel"></span>
                                         </span>
                                 </div>
                             </div>
                         
                             <div class="form-group">
-                                <label class="col-sm-2 no-padding-right" for="form-field-2"> Qty From*</label>
+                                <label class="col-sm-2 no-padding-right" for="form-field-2"> Charge type Name*</label>
 
                                 <div class="col-sm-9">
                                     <?php 
                                     $data = array(
-                                        'name'          => 'QtyFrom',
-                                        'id'            => 'QtyFrom',
-                                        'value'         => (!empty($factordata[0])) ? $factordata[0]->QtyFrom: '',
+                                        'name'          => 'ChartTypeName',
+                                        'id'            => 'ChartTypeName',
+                                        'value'         => (!empty($vProductdata[0])) ? $vProductdata[0]->ChartTypeName: '',
                                         'maxlength'     => '45',
-                                        "placeholder"   => "Qty From",
+                                        "placeholder"   => "Chart Type name",
                                         "class"         => "col-xs-10 col-sm-5 mandatory-field"
                                         );
-
                                         echo form_input($data);
                                     ?>
                                         <span class="help-inline col-xs-12 col-sm-7">
-                                                <span class="middle input-text-error" id="QtyFrom_errorlabel"></span>
+                                                <span class="middle input-text-error" id="ChartTypeName_errorlabel"></span>
                                         </span>
                                 </div>
                             </div>
                             
                             <div class="form-group">
-                                <label class="col-sm-2 no-padding-right" for="form-field-2"> QtyTo*</label>
+                                <label class="col-sm-2 no-padding-right" for="form-field-2"> Number of Plate*</label>
 
                                 <div class="col-sm-9">
                                     <?php 
                                     $data = array(
-                                        'name'          => 'QtyTo',
-                                        'id'            => 'QtyTo',
-                                        'value'         => (!empty($factordata[0])) ? $factordata[0]->QtyTo: '',
+                                        'name'          => 'NoOfPlate',
+                                        'id'            => 'NoOfPlate',
+                                        'value'         => (!empty($vProductdata[0])) ? $vProductdata[0]->NoOfPlate: '',
                                         'maxlength'     => '45',
-                                        "placeholder"   => "Enter QtyTo",
+                                        "placeholder"   => "Enter No Of Plate",
                                         "class"         => "col-xs-10 col-sm-5 mandatory-field"
                                         );
 
                                         echo form_input($data);
                                     ?>
                                         <span class="help-inline col-xs-12 col-sm-7">
-                                                <span class="middle input-text-error" id="QtyTo_errorlabel"></span>
+                                                <span class="middle input-text-error" id="NoOfPlate_errorlabel"></span>
                                         </span>
                                 </div>
                             </div>
                         
                             <div class="form-group">
-                                <label class="col-sm-2 no-padding-right" for="form-field-2"> Factor*</label>
+                                <label class="col-sm-2 no-padding-right" for="form-field-2"> FID*</label>
 
                                 <div class="col-sm-9">
                                     <?php 
                                     $data = array(
-                                        'name'          => 'Factor',
-                                        'id'            => 'Factor',
-                                        'value'         => (!empty($factordata[0])) ? $factordata[0]->Factor: '',
+                                        'name'          => 'FID',
+                                        'id'            => 'FID',
+                                        'value'         => (!empty($vProductdata[0])) ? $vProductdata[0]->FID: '',
                                         'maxlength'     => '45',
-                                        "placeholder"   => "Enter Factor",
+                                        "placeholder"   => "Enter FID",
                                         "class"         => "col-xs-10 col-sm-5 mandatory-field"
                                         );
 
                                         echo form_input($data);
                                     ?>
                                         <span class="help-inline col-xs-12 col-sm-7">
-                                                <span class="middle input-text-error" id="Factor_errorlabel"></span>
+                                                <span class="middle input-text-error" id="FID_errorlabel"></span>
                                         </span>
                                 </div>
                             </div>
-                        
+            
+                            <div class="form-group">
+                                <label class="col-sm-2 no-padding-right" for="form-field-2">Formula Name*</label>
+
+                                <div class="col-sm-9">
+                                    <?php 
+                                    $data = array(
+                                        'name'          => 'FormulaName',
+                                        'id'            => 'FormulaName',
+                                        'value'         => (!empty($vProductdata[0])) ? $vProductdata[0]->FormulaName: '',
+                                        'maxlength'     => '45',
+                                        "placeholder"   => "Enter Formula Name",
+                                        "class"         => "col-xs-10 col-sm-5 mandatory-field"
+                                        );
+
+                                        echo form_input($data);
+                                    ?>
+                                        <span class="help-inline col-xs-12 col-sm-7">
+                                                <span class="middle input-text-error" id="FormulaName_errorlabel"></span>
+                                        </span>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="col-sm-2 no-padding-right" for="form-field-2">Type*</label>
+
+                                <div class="col-sm-9">
+                                    <?php 
+                                    $data = array(
+                                        'name'          => 'Type',
+                                        'id'            => 'Type',
+                                        'value'         => (!empty($vProductdata[0])) ? $vProductdata[0]->Type: '',
+                                        'maxlength'     => '45',
+                                        "placeholder"   => "Enter Type",
+                                        "class"         => "col-xs-10 col-sm-5 mandatory-field"
+                                        );
+
+                                        echo form_input($data);
+                                    ?>
+                                        <span class="help-inline col-xs-12 col-sm-7">
+                                                <span class="middle input-text-error" id="Type_errorlabel"></span>
+                                        </span>
+                                </div>
+                            </div>
+            
+                            <div class="form-group">
+                                <label class="col-sm-2 no-padding-right" for="form-field-2">Type Name*</label>
+
+                                <div class="col-sm-9">
+                                    <?php 
+                                    $data = array(
+                                        'name'          => 'TypeName',
+                                        'id'            => 'TypeName',
+                                        'value'         => (!empty($vProductdata[0])) ? $vProductdata[0]->TypeName: '',
+                                        'maxlength'     => '45',
+                                        "placeholder"   => "Enter Type Name",
+                                        "class"         => "col-xs-10 col-sm-5 mandatory-field"
+                                        );
+
+                                        echo form_input($data);
+                                    ?>
+                                        <span class="help-inline col-xs-12 col-sm-7">
+                                                <span class="middle input-text-error" id="TypeName_errorlabel"></span>
+                                        </span>
+                                </div>
+                            </div>
+            
+                            <div class="form-group">
+                                <label class="col-sm-2 no-padding-right" for="form-field-2">Material*</label>
+
+                                <div class="col-sm-9">
+                                    <?php 
+                                    $data = array(
+                                        'name'          => 'Material',
+                                        'id'            => 'Material',
+                                        'value'         => (!empty($vProductdata[0])) ? $vProductdata[0]->Material: '',
+                                        'maxlength'     => '45',
+                                        "placeholder"   => "Enter Material",
+                                        "class"         => "col-xs-10 col-sm-5 mandatory-field"
+                                        );
+
+                                        echo form_input($data);
+                                    ?>
+                                        <span class="help-inline col-xs-12 col-sm-7">
+                                                <span class="middle input-text-error" id="Material_errorlabel"></span>
+                                        </span>
+                                </div>
+                            </div>
+            
+                            <div class="form-group">
+                                <label class="col-sm-2 no-padding-right" for="form-field-2">FD1*</label>
+
+                                <div class="col-sm-9">
+                                    <?php 
+                                        $data = array(
+                                            'name'          => 'FID1',
+                                            'id'            => 'FID1',
+                                            'value'         => (!empty($vProductdata[0])) ? $vProductdata[0]->FID1: '',
+                                            'maxlength'     => '45',
+                                            "placeholder"   => "Enter FID1",
+                                            "class"         => "col-xs-10 col-sm-5 mandatory-field"
+                                            );
+
+                                            echo form_input($data);
+                                    ?>
+                                        <span class="help-inline col-xs-12 col-sm-7">
+                                                <span class="middle input-text-error" id="FID1_errorlabel"></span>
+                                        </span>
+                                </div>
+                            </div>
+            
+                            
                             <div class="clearfix form-actions">
                                     <div class="col-md-offset-3 col-md-9">
                                             <button class="btn btn-info test" type="submit">

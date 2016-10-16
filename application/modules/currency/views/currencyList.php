@@ -24,7 +24,8 @@
 			<div class="page-header">
 				<h1>
 					Currency
-				</h1><div><h2><?php echo $this->session->flashdata('successMsg'); ?></h2> </div>
+				</h1><div class="SuccessMessage"><h2><?php echo $this->session->flashdata('successMsg'); ?></h2> </div>
+                            <div id="deletemessage"> </div>
 			</div><!-- /.page-header -->
 
 			<div class="row">

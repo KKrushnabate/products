@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Factor extends MX_Controller {
+class Metalthickness extends MX_Controller {
         private $view_data = array();
 	function __construct() {
 	    parent::__construct();
@@ -9,58 +9,52 @@ class Factor extends MX_Controller {
             $this->load->helper('form');
             $this->load->module('header/header');
             $this->load->module('footer/footer');
-            $this->load->model('factor/factor_model');
+            $this->load->model('metalthickness/metalthickness_model');
             $this->load->model('helper/helper_model');
 	}
-	
-	public function  index(){
-		$this->factorList();
-	}
-	
-	public function factorMaster($factor_id = ''){        
-                if($factor_id != ''){
-                    $tableName = FACTOR;
+    public function  index(){
+        $this->metalthicknessList();
+    }
+	public function metalthicknessMaster($metalthisckness_id = ''){
+            
+                if($metalthisckness_id != ''){
+                    $tableName = METALTHICKNESS;
                     $select = "*";
-                    $column = array('SrNo'=> $factor_id );
+                    $column = array('SrNo'=> $metalthisckness_id);
                     $value = "";
-                    $this->view_data['factordata'] = $this->factor_model->getData($select, $tableName, $column, $value);
+                    $this->view_data['metalthickness'] = $this->metalthickness_model->getData($select, $tableName, $column, $value);
                 }
 		$this->header->index();
-		$this->load->view('factorAdd',$this->view_data);
+		$this->load->view('metalthicknessAdd',$this->view_data);
 		$this->footer->index();
 	}
 	
-	public function addfactor()
+	public function addmetalthickness()
 	{
             $SrNo =  isset($_POST['SrNo']) ? $_POST['SrNo'] : '';
             $ODFrom = isset($_POST['ODFrom']) ? $_POST['ODFrom'] : '';
-            $ODTo = isset($_POST['ODTo']) ?$_POST['ODTo'] : '';
-            $QtyFrom = isset($_POST['QtyFrom']) ?  $_POST['QtyFrom']: '';
-            $QtyTo = isset($_POST['QtyTo']) ?$_POST['QtyTo']: '';
-            $Factor = isset($_POST['Factor']) ?$_POST['Factor']: '';
-            
+            $ODTo = isset($_POST['ODTo']) ? $_POST['ODTo'] : '';
+            $THK = isset($_POST['THK']) ?$_POST['THK'] : '';
 
             $data =array(
-                       'SrNo'=>$SrNo,
-						'ODFrom' => $ODFrom,
-						'ODTo' => $ODTo,
-						'QtyFrom' => $QtyFrom,
-						'QtyTo' => $QtyTo,
-						'Factor' => $Factor
+                'SrNo' => $SrNo,
+                'ODFrom'=> $ODFrom,
+                'ODTo'=> $ODTo,
+                'THK'=> $THK
             );
             
-            $table_name =  FACTOR;
+            $tablename =  METALTHICKNESS;
 
             if($SrNo != ''){
                 $columnName = "SrNo";$value = $SrNo;
-                $SrNo = $this->factor_model->updateData($table_name,$data,$columnName,$value);
+                $SrNo = $this->metalthickness_model->updateData($tablename,$data,$columnName,$value);
             }else{
-                $SrNo = $this->factor_model->saveData($table_name,$data);
+                $SrNo = $this->metalthickness_model->saveData($tablename,$data);
             }
 
             $response = array();
             if($SrNo){
-                $response['success_message'][] = "Added Successfully.";
+                $this->session->set_flashdata('successMsg', "Added Successfully.");
                 $response['success'] = true;
             }else{
                 $response['error_message'][] = "Please try again Later.";
@@ -69,17 +63,18 @@ class Factor extends MX_Controller {
             echo json_encode($response);exit();
  	}
 
- 	public function factorList(){
- 		$tablenamw =  FACTOR;
- 		$filds = "SrNo,ODFrom,ODTo,QtyFrom,QtyTo,Factor";
- 		$this->view_data['list'] = $this->factor_model->getfactorList($filds,$tablenamw);
-		$this->header->index();
-		$this->load->view('factorList', $this->view_data);
+ 	public function metalthicknessList(){
+ 		$table =  METALTHICKNESS;
+ 		$filds = "SrNo,ODFrom,ODTo,THK";
+ 		$this->view_data['list'] = $this->metalthickness_model->getmetalthicknessList($filds,$table);
+        $this->header->index();
+		$this->load->view('metalthicknessList', $this->view_data);
 		$this->footer->index();
  	}
- 	public function delete($factor_id){
-        $tablename =  FACTOR;
-        $resultMaster = $this->helper_model->delete($tablename,'SrNo',$factor_id);
+ 	
+ 	public function delete($metalthickness){
+        $tablename =  METALTHICKNESS;
+        $resultMaster = $this->helper_model->delete($tablename,'SrNo',$metalplate);
         if($resultMaster != false){
                 $this->session->set_flashdata('successMsg', "Record Deleted");
                 $response['success'] = true;

@@ -6,14 +6,14 @@
 					<i class="ace-icon fa fa-home home-icon"></i>
 					<a href="<?php echo site_url();?>">Home</a>
 				</li>
-				<li class="active">Factor</li>
+				<li class="active">Material Name</li>
 			</ul><!-- /.breadcrumb -->
 
 			<div class="nav-search" id="nav-search">
 				<form class="form-search">
 					<span class="input-icon">
-                                            <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
-                                            <i class="ace-icon fa fa-search nav-search-icon"></i>
+						<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+						<i class="ace-icon fa fa-search nav-search-icon"></i>
 					</span>
 				</form>
 			</div><!-- /.nav-search -->
@@ -23,9 +23,9 @@
 			
 			<div class="page-header">
 				<h1>
-					Factor
+					Material 
 				</h1><div class="SuccessMessage"><h2><?php echo $this->session->flashdata('successMsg'); ?></h2> </div>
-				<div id="deletemessage"> </div>
+                            <div id="deletemessage"> </div>
 			</div><!-- /.page-header -->
 
 			<div class="row">
@@ -34,16 +34,16 @@
 					<!-- PAGE CONTENT BEGINS -->
 					<div class="row">
 						<div class="col-xs-12">
-							<button class="btn btn-info test" type="submit">
-								<a href="<?php echo site_url('factor/factorMaster'); ?>"><i class="fa fa-plus"></i>Add Factor</a>
-							</button>
+                                    <button class="btn btn-info test" type="submit">
+										<a href="<?php echo site_url('material/materialMaster'); ?>"><i class="fa fa-plus"></i>Add Material </a>
+									</button>
 							<h3 class="header smaller lighter blue"></h3>
 
 							<div class="clearfix">
 								<div class="pull-right tableTools-container"></div>
 							</div>
 							<div class="table-header">
-								Factor
+									Product
 							</div>
 
 							<!-- div.table-responsive -->
@@ -54,27 +54,24 @@
 								<table id="dynamic-table" class="table table-striped table-bordered table-hover">
 									<thead>
 										<tr>
-											<th>ODFrom</th>
-											<th>ODTo</th>
-											<th>QtyFrom</th>
-											<th>QtyTo</th>
-											<th>Factor</th>
-											<th>Action</th>
+											<th>SrNo</th>
+                                            <th>Material Name</th>
+											<th>Density</th>
+                                            <th>PerKG</th>
+                                            <th>Action</th>
 										</tr>
 									</thead>
 
 									<tbody>
-										<?php foreach ($list as $val): ?>
+										<?php $i = 1; foreach ($list as $val): ?>
 											<tr>
-												<td><?php echo $val->ODFrom; ?></td>
-												<td><?php echo $val->ODTo; ?></td>
-												<td><?php echo $val->QtyFrom; ?></td>
-												<td><?php echo $val->QtyTo; ?></td>
-												<td><?php echo $val->Factor; ?></td>
-											
+												<td><?php echo $i; $i++; ?></td>
+												<td><?php echo $val->MaterialName; ?></td>
+												<td><?php echo $val->Density; ?></td>
+												<td><?php echo $val->PerKG; ?></td>
 												<td>
 													<div class="hidden-sm hidden-xs action-buttons">
-														<a class="green" href="<?php echo site_url('/factor/factorMaster/'.$val->SrNo); ?>">
+														<a class="green" href="<?php echo site_url('/material/materialMaster/'.$val->SrNo); ?>">
 															<i class="ace-icon fa fa-pencil bigger-130"></i>
 														</a>
 														<a class="red delete" href="#" id="<?php echo "delete_".$val->SrNo; ?>">

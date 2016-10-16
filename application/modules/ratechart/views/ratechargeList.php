@@ -6,14 +6,14 @@
 					<i class="ace-icon fa fa-home home-icon"></i>
 					<a href="<?php echo site_url();?>">Home</a>
 				</li>
-				<li class="active">Factor</li>
+				<li class="active">Rate Chart</li>
 			</ul><!-- /.breadcrumb -->
 
 			<div class="nav-search" id="nav-search">
 				<form class="form-search">
 					<span class="input-icon">
-                                            <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
-                                            <i class="ace-icon fa fa-search nav-search-icon"></i>
+                        <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                        <i class="ace-icon fa fa-search nav-search-icon"></i>
 					</span>
 				</form>
 			</div><!-- /.nav-search -->
@@ -23,9 +23,9 @@
 			
 			<div class="page-header">
 				<h1>
-					Factor
+					Rate Chart
 				</h1><div class="SuccessMessage"><h2><?php echo $this->session->flashdata('successMsg'); ?></h2> </div>
-				<div id="deletemessage"> </div>
+                            <div id="deletemessage"> </div>
 			</div><!-- /.page-header -->
 
 			<div class="row">
@@ -35,7 +35,7 @@
 					<div class="row">
 						<div class="col-xs-12">
 							<button class="btn btn-info test" type="submit">
-								<a href="<?php echo site_url('factor/factorMaster'); ?>"><i class="fa fa-plus"></i>Add Factor</a>
+								<a href="<?php echo site_url('ratechart/ratechartMaster'); ?>"><i class="fa fa-plus"></i>Add Rate Chart </a>
 							</button>
 							<h3 class="header smaller lighter blue"></h3>
 
@@ -43,7 +43,7 @@
 								<div class="pull-right tableTools-container"></div>
 							</div>
 							<div class="table-header">
-								Factor
+								Rate Chart
 							</div>
 
 							<!-- div.table-responsive -->
@@ -54,30 +54,40 @@
 								<table id="dynamic-table" class="table table-striped table-bordered table-hover">
 									<thead>
 										<tr>
-											<th>ODFrom</th>
-											<th>ODTo</th>
-											<th>QtyFrom</th>
-											<th>QtyTo</th>
-											<th>Factor</th>
-											<th>Action</th>
+											<th>SRNo</th>
+                                            <th>RateSrNo</th>
+											<th>OdFrom</th>
+                                            <th>ODTo</th>
+                                            <th>ThkFrom</th>
+                                            <th>ThkTo</th>
+                                            <th>QtyFrom</th>
+                                            <th>QtyTo</th>
+                                            <th>OldDie</th>
+                                            <th>NewDie</th>
+                                            <th>Action</th>
 										</tr>
 									</thead>
 
 									<tbody>
-										<?php foreach ($list as $val): ?>
+										<?php $i = 1; foreach ($list as $val): ?>
 											<tr>
-												<td><?php echo $val->ODFrom; ?></td>
+												<td><?php echo $i; $i++;?></td>
+												<td><?php echo $val->RateSrNo; ?></td>
+												<td><?php echo $val->OdFrom; ?></td>
 												<td><?php echo $val->ODTo; ?></td>
-												<td><?php echo $val->QtyFrom; ?></td>
-												<td><?php echo $val->QtyTo; ?></td>
-												<td><?php echo $val->Factor; ?></td>
+                                                <td><?php echo $val->ThkFrom; ?></td>
+                                                <td><?php echo $val->ThkTo; ?></td>
+                                                <td><?php echo $val->QtyFrom; ?></td>
+                                                <td><?php echo $val->QtyTo; ?></td>
+                                                <td><?php echo $val->OldDie; ?></td>
+                                                <td><?php echo $val->NewDie; ?></td>
 											
 												<td>
 													<div class="hidden-sm hidden-xs action-buttons">
-														<a class="green" href="<?php echo site_url('/factor/factorMaster/'.$val->SrNo); ?>">
+														<a class="green" href="<?php echo site_url('/ratechart/ratechartMaster/'.$val->SRNo); ?>">
 															<i class="ace-icon fa fa-pencil bigger-130"></i>
 														</a>
-														<a class="red delete" href="#" id="<?php echo "delete_".$val->SrNo; ?>">
+														<a class="red delete" href="#" id="<?php echo "delete_".$val->SRNo; ?>">
 																<i class="ace-icon fa fa-trash-o bigger-130"></i>
 														</a>
 													</div>
@@ -158,7 +168,7 @@
 					bAutoWidth: false,
 					"aoColumns": [
 					  { "bSortable": false },
-					  null, null,null, null, null, null,
+					  null, null,null, null, null, null,null,null, null, null, null,
 					  { "bSortable": false }
 					],
 					"aaSorting": [],

@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Factor_model extends CI_Model {
+class Material_model extends CI_Model {
 
 	function __construct(){
 		// Call the Model constructor
@@ -29,7 +29,7 @@ class Factor_model extends CI_Model {
 		return $result;
 	}
 
-	public function getfactorList($data,$table){
+	public function getVproductList($data,$table){
 
 		$result = $this->helper_model->selectAll($data,$table);
 		return $result;

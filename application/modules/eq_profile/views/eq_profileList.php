@@ -1,30 +1,31 @@
 <div class="main-content">
 	<div class="main-content-inner">
-		<div class="breadcrumbs ace-save-state" id="breadcrumbs">
-			<ul class="breadcrumb">
-				<li>
-					<i class="ace-icon fa fa-home home-icon"></i>
-					<a href="<?php echo site_url();?>">Home</a>
-				</li>
-				<li class="active">Equivalent Profile</li>
-			</ul><!-- /.breadcrumb -->
+            <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="ace-icon fa fa-home home-icon"></i>
+                        <a href="<?php echo site_url();?>">Home</a>
+                    </li>
+                    <li class="active">Equivalent Profile</li>
+                </ul><!-- /.breadcrumb -->
 
-			<div class="nav-search" id="nav-search">
-				<form class="form-search">
-					<span class="input-icon">
-                                            <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
-                                            <i class="ace-icon fa fa-search nav-search-icon"></i>
-					</span>
-				</form>
-			</div><!-- /.nav-search -->
-		</div>
+                <div class="nav-search" id="nav-search">
+                    <form class="form-search">
+                        <span class="input-icon">
+                            <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                            <i class="ace-icon fa fa-search nav-search-icon"></i>
+                        </span>
+                    </form>
+                </div><!-- /.nav-search -->
+            </div>
 
 		<div class="page-content">
 			
 			<div class="page-header">
 				<h1>
-					Equivalent Profile
-				</h1>
+                                    Equivalent Profile
+				</h1><div class="SuccessMessage"><h2><?php echo $this->session->flashdata('successMsg'); ?></h2> </div>
+                            <div id="deletemessage"> </div>
 			</div><!-- /.page-header -->
 
 			<div class="row">
@@ -33,6 +34,9 @@
 					<!-- PAGE CONTENT BEGINS -->
 					<div class="row">
 						<div class="col-xs-12">
+                                                    <button class="btn btn-info test" type="submit">
+                                                        <a href="<?php echo site_url('eq_profile/eq_profileMaster'); ?>"><i class="fa fa-plus"></i>Add Equvalent Profile</a>
+                                                    </button>
 							<h3 class="header smaller lighter blue"></h3>
 
 							<div class="clearfix">
@@ -46,35 +50,38 @@
 
 							<!-- div.dataTables_borderWrap -->
 							<form class="form" id="driverList"></form>
-							<div>
 								<table id="dynamic-table" class="table table-striped table-bordered table-hover">
 									<thead>
 										<tr>
+                                                                                        <th>Id</th>
 											<th>Profile</th>
-                                                                                        <th>CompanyName</th>
+                                                                                        <th>Company Name</th>
 											<th>Equivalent</th>
-                                                                                        <th>Profile name</th>
                                                                                         <th>Action</th>
 										</tr>
 									</thead>
 
 									<tbody>
-										<?php foreach ($list as $val): ?>
+										<?php 
+                                                                                $i = 1;
+                                                                                foreach ($list as $val){ ?>
 											<tr>
+                                                                                                <td><?php echo $i;$i++; ?></td>
 												<td><?php echo $val->Profile; ?></td>
 												<td><?php echo $val->CompanyName; ?></td>
 												<td><?php echo $val->Equivalent; ?></td>
-												<td><?php echo $profilelist[$val->ProfileID]; ?></td>
-                                                                                                
 												<td>
-													<div class="hidden-sm hidden-xs action-buttons">
-														<a class="green" href="<?php echo site_url('/currency/currencyMaster/'.$val->id); ?>">
-															<i class="ace-icon fa fa-pencil bigger-130"></i>
-														</a>
-													</div>
+														<div class="hidden-sm hidden-xs action-buttons">
+																<a class="green" href="<?php echo site_url('/eq_profile/eq_profileMaster/'.$val->id); ?>">
+																		<i class="ace-icon fa fa-pencil bigger-130"></i>
+																</a>
+																<a class="red delete" href="#" id="<?php echo "delete_".$val->id; ?>">
+																		<i class="ace-icon fa fa-trash-o bigger-130"></i>
+																</a>
+														</div>
 												</td>
 											</tr>
-										<?php endforeach; ?>
+										<?php } ?>
 									</tbody>
 								</table>
 							</div>

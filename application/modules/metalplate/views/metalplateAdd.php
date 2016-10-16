@@ -4,13 +4,13 @@
             <ul class="breadcrumb">
                 <li>
                     <i class="ace-icon fa fa-home home-icon"></i>
-                    <a href="#">Home</a>
+                    <a href="<?php echo site_url();?>">Home</a>
                 </li>
 
                 <li>
-                    <a href="<?php echo site_url('/factor/index'); ?>">Factor</a>
+                    <a href="<?php echo site_url('/currency/index'); ?>">Metal Plate</a>
                 </li>
-                <li class="active">Add Factor</li>
+                <li class="active">Add Metal Plate</li>
             </ul><!-- /.breadcrumb -->
 
             <div class="nav-search" id="nav-search">
@@ -27,7 +27,7 @@
 
             <div class="page-header">
                 <h1>
-                    Add Factor
+                    Add Metal Plate
                 </h1>
             </div><!-- /.page-header -->
 
@@ -36,129 +36,128 @@
                     <div class="alert-box"></div>
                         <!-- PAGE CONTENT BEGINS -->
                             <?php
-                                $strFormId = "factormaster";
+                                $strFormId = "metalplatemaster";
                                 $arrAttributers = array("class"=>"form-horizontal", "role"=>"form","id"=>$strFormId);
                                 echo form_open('',$arrAttributers); 
                             ?>
-                        
                             <div class="form-group">
-                                <label class="col-sm-2 no-padding-right" for="form-field-2">OD from </label>
+                                <label class="col-sm-2 no-padding-right" for="form-field-2">Profile Name*</label>
+
                                 <div class="col-sm-9">
                                     <?php 
                                     $data = array(
                                         'name'          => 'SrNo',
                                         'id'            => 'SrNo',
                                         'type'            => 'hidden',
-                                        'value'         => (!empty($factordata[0])) ? $factordata[0]->SrNo: '',
+                                        'value'         => (!empty($metalPlatedata[0])) ? $metalPlatedata[0]->SrNo: '',
                                         );
 
                                     echo form_input($data);
                                         
                                     $data = array(
-                                        'name'          => 'ODFrom',
-                                        'id'            => 'ODFrom',
-                                        'value'         => (!empty($factordata[0])) ? $factordata[0]->ODFrom: '',
+                                        'name'          => 'ProfileName',
+                                        'id'            => 'ProfileName',
+                                        'value'         => (!empty($metalPlatedata[0])) ? $metalPlatedata[0]->ProfileName: '',
                                         'maxlength'     => '45',
-                                        "placeholder"   => "Enter OD from ",
+                                        "placeholder"   => "Enter Currency Name",
                                         "class"         => "col-xs-10 col-sm-5 mandatory-field"
                                         );
-
+                                    if(!empty($metalPlatedata[0]->SrNo)){$data["readonly"]      = "readonly";}
                                         echo form_input($data);
                                     ?>
                                         <span class="help-inline col-xs-12 col-sm-7">
-                                                <span class="middle input-text-error" id="ODFrom_errorlabel"></span>
+                                                <span class="middle input-text-error" id="ProfileName_errorlabel"></span>
                                         </span>
                                 </div>
                             </div>
                                         
                             <div class="form-group">
-                                <label class="col-sm-2 no-padding-right" for="form-field-2">ODTo*</label>
+                                <label class="col-sm-2 no-padding-right" for="form-field-2">No Of Plate RU*</label>
 
                                 <div class="col-sm-9">
                                     <?php 
                                     $data = array(
-                                        'name'          => 'ODTo',
-                                        'id'            => 'ODTo',
-                                        'value'         => (!empty($factordata[0])) ? $factordata[0]->ODTo: '',
+                                        'name'          => 'NoOfPlateRU',
+                                        'id'            => 'NoOfPlateRU',
+                                        'value'         => (!empty($metalPlatedata[0])) ? $metalPlatedata[0]->NoOfPlateRU: '',
                                         'maxlength'     => '100',
-                                        "placeholder"   => "ODTo",
+                                        "placeholder"   => "No Of Plate RU",
                                         "class"         => "col-xs-10 col-sm-5 mandatory-field"
                                         );
-
                                         echo form_input($data);
                                     ?>
                                         <span class="help-inline col-xs-12 col-sm-7">
-                                                <span class="middle input-text-error" id="ODTo_errorlabel"></span>
+                                                <span class="middle input-text-error" id="NoOfPlateRU_errorlabel"></span>
                                         </span>
                                 </div>
                             </div>
                         
                             <div class="form-group">
-                                <label class="col-sm-2 no-padding-right" for="form-field-2"> Qty From*</label>
+                                <label class="col-sm-2 no-padding-right" for="form-field-2"> No Of Plat ePU*</label>
 
                                 <div class="col-sm-9">
                                     <?php 
                                     $data = array(
-                                        'name'          => 'QtyFrom',
-                                        'id'            => 'QtyFrom',
-                                        'value'         => (!empty($factordata[0])) ? $factordata[0]->QtyFrom: '',
+                                        'name'          => 'NoOfPlatePU',
+                                        'id'            => 'NoOfPlatePU',
+                                        'value'         => (!empty($metalPlatedata[0])) ? $metalPlatedata[0]->NoOfPlatePU: '',
                                         'maxlength'     => '45',
-                                        "placeholder"   => "Qty From",
+                                        "placeholder"   => "No Of Plate PU",
                                         "class"         => "col-xs-10 col-sm-5 mandatory-field"
                                         );
-
                                         echo form_input($data);
                                     ?>
                                         <span class="help-inline col-xs-12 col-sm-7">
-                                                <span class="middle input-text-error" id="QtyFrom_errorlabel"></span>
+                                                <span class="middle input-text-error" id="NoOfPlatePU_errorlabel"></span>
                                         </span>
                                 </div>
                             </div>
                             
                             <div class="form-group">
-                                <label class="col-sm-2 no-padding-right" for="form-field-2"> QtyTo*</label>
+                                <label class="col-sm-2 no-padding-right" for="form-field-2"> No Of Metal*</label>
 
                                 <div class="col-sm-9">
                                     <?php 
                                     $data = array(
-                                        'name'          => 'QtyTo',
-                                        'id'            => 'QtyTo',
-                                        'value'         => (!empty($factordata[0])) ? $factordata[0]->QtyTo: '',
+                                        'name'          => 'NoOfMetal',
+                                        'id'            => 'NoOfMetal',
+                                        'value'         => (!empty($metalPlatedata[0])) ? $metalPlatedata[0]->NoOfMetal: '',
                                         'maxlength'     => '45',
-                                        "placeholder"   => "Enter QtyTo",
+                                        "placeholder"   => "Enter No Of Metal",
                                         "class"         => "col-xs-10 col-sm-5 mandatory-field"
                                         );
 
                                         echo form_input($data);
                                     ?>
                                         <span class="help-inline col-xs-12 col-sm-7">
-                                                <span class="middle input-text-error" id="QtyTo_errorlabel"></span>
+                                                <span class="middle input-text-error" id="NoOfMetal_errorlabel"></span>
                                         </span>
                                 </div>
                             </div>
                         
                             <div class="form-group">
-                                <label class="col-sm-2 no-padding-right" for="form-field-2"> Factor*</label>
+                                <label class="col-sm-2 no-padding-right" for="form-field-2"> Cup Spring*</label>
 
                                 <div class="col-sm-9">
                                     <?php 
                                     $data = array(
-                                        'name'          => 'Factor',
-                                        'id'            => 'Factor',
-                                        'value'         => (!empty($factordata[0])) ? $factordata[0]->Factor: '',
+                                        'name'          => 'CupSpring',
+                                        'id'            => 'CupSpring',
+                                        'value'         => (!empty($metalPlatedata[0])) ? $metalPlatedata[0]->CupSpring: '',
                                         'maxlength'     => '45',
-                                        "placeholder"   => "Enter Factor",
+                                        "placeholder"   => "Enter Cup Spring",
                                         "class"         => "col-xs-10 col-sm-5 mandatory-field"
                                         );
 
                                         echo form_input($data);
                                     ?>
                                         <span class="help-inline col-xs-12 col-sm-7">
-                                                <span class="middle input-text-error" id="Factor_errorlabel"></span>
+                                                <span class="middle input-text-error" id="CupSpring_errorlabel"></span>
                                         </span>
                                 </div>
                             </div>
                         
+                            
                             <div class="clearfix form-actions">
                                     <div class="col-md-offset-3 col-md-9">
                                             <button class="btn btn-info test" type="submit">

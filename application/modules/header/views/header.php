@@ -457,20 +457,19 @@
                                         <li class="active">
 						<a href="<?php echo site_url("/factor/index"); ?>">
 							<i class="menu-icon fa fa-tachometer"></i>
-							<span class="menu-text"> Equivalant Profile </span>
+							<span class="menu-text"> Factor </span>
 						</a>
 						<b class="arrow"></b>
 					</li>
-                                        
                                         <li class="active">
-						<a href="<?php echo site_url("/material_farmula/index"); ?>">
+						<a href="<?php echo site_url("/materialfarmula/index"); ?>">
 							<i class="menu-icon fa fa-tachometer"></i>
-							<span class="menu-text"> Material Farmula </span>
+							<span class="menu-text"> Material Farmula</span>
 						</a>
 						<b class="arrow"></b>
 					</li>
                                         
-                                        <li class="active">
+					<li class="active">
 						<a href="<?php echo site_url("/material/index"); ?>">
 							<i class="menu-icon fa fa-tachometer"></i>
 							<span class="menu-text"> Material</span>
@@ -479,7 +478,7 @@
 					</li>
                                         
                                         <li class="active">
-						<a href="<?php echo site_url("/metal_planet/index"); ?>">
+						<a href="<?php echo site_url("/metalplate/index"); ?>">
 							<i class="menu-icon fa fa-tachometer"></i>
 							<span class="menu-text"> Metal Planet </span>
 						</a>
@@ -487,23 +486,15 @@
 					</li>
                                         
                                         <li class="active">
-						<a href="<?php echo site_url("/metal_thickness/index"); ?>">
+						<a href="<?php echo site_url("/metalthickness/index"); ?>">
 							<i class="menu-icon fa fa-tachometer"></i>
 							<span class="menu-text"> Metal Thickness</span>
 						</a>
 						<b class="arrow"></b>
 					</li>
                                         
-                                        <li class="active">
-						<a href="<?php echo site_url("/product/index"); ?>">
-							<i class="menu-icon fa fa-tachometer"></i>
-							<span class="menu-text"> Product</span>
-						</a>
-						<b class="arrow"></b>
-					</li>
-                                        
-                                        <li class="active">
-						<a href="<?php echo site_url("/rate/index"); ?>">
+                     <li class="active">
+						<a href="<?php echo site_url("/ratechart/index"); ?>">
 							<i class="menu-icon fa fa-tachometer"></i>
 							<span class="menu-text"> Rate</span>
 						</a>
@@ -511,9 +502,9 @@
 					</li>
                                         
 					<li class="active">
-						<a href="<?php echo site_url("/product_farmula/index"); ?>">
+						<a href="<?php echo site_url("/vproduct/index"); ?>">
 							<i class="menu-icon fa fa-tachometer"></i>
-							<span class="menu-text"> Product Farmula</span>
+							<span class="menu-text"> Product</span>
 						</a>
 						<b class="arrow"></b>
 					</li>

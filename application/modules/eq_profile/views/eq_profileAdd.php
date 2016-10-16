@@ -42,145 +42,68 @@
                             ?>
                         
                             <div class="form-group">
-                                <label class="col-sm-2 no-padding-right" for="form-field-2">Currency Name*</label>
+                                <label class="col-sm-2 no-padding-right" for="form-field-2"> Profile*</label>
 
                                 <div class="col-sm-9">
                                     <?php 
                                     $data = array(
-                                        'name'          => 'SrNo',
-                                        'id'            => 'SrNo',
+                                        'name'          => 'id',
+                                        'id'            => 'id',
                                         'type'            => 'hidden',
-                                        'value'         => (!empty($currencydata[0])) ? $currencydata[0]->SrNo: '',
+                                        'value'         => (!empty($eqprofiledata[0])) ? $eqprofiledata[0]->id: '',
                                         );
 
                                     echo form_input($data);
-                                        
-                                    $data = array(
-                                        'name'          => 'CurrencyName',
-                                        'id'            => 'CurrencyName',
-                                        'value'         => (!empty($currencydata[0])) ? $currencydata[0]->CurrencyName: '',
-                                        'maxlength'     => '45',
-                                        "placeholder"   => "Enter Currency Name",
-                                        "readonly"      => "readonly",
-                                        "class"         => "col-xs-10 col-sm-5 mandatory-field"
-                                        );
-
-                                        echo form_input($data);
+                                    
+                                    $selected=(!empty($eqprofiledata[0])? $eqprofiledata[0]->ProfileID."-".$eqprofiledata[0]->Profile: '');
+                                        echo form_dropdown('ProfileID',$profilelist,$selected,array("class" => "col-xs-10 col-sm-5"));
                                     ?>
                                         <span class="help-inline col-xs-12 col-sm-7">
-                                                <span class="middle input-text-error" id="CurrencyName_errorlabel"></span>
+                                                <span class="middle input-text-error" id="ProfileID_errorlabel"></span>
                                         </span>
                                 </div>
                             </div>
                                         
                             <div class="form-group">
-                                <label class="col-sm-2 no-padding-right" for="form-field-2">Currency Description*</label>
+                                <label class="col-sm-2 no-padding-right" for="form-field-2">Company Name*</label>
 
                                 <div class="col-sm-9">
                                     <?php 
                                     $data = array(
-                                        'name'          => 'CurrencyDescription',
-                                        'id'            => 'CurrencyDescription',
-                                        'value'         => (!empty($currencydata[0])) ? $currencydata[0]->CurrencyDescription: '',
+                                        'name'          => 'CompanyName',
+                                        'id'            => 'CompanyName',
+                                        'value'         => (!empty($eqprofiledata[0])) ? $eqprofiledata[0]->CompanyName: '',
                                         'maxlength'     => '100',
-                                        "placeholder"   => "Currency Description",
-                                        "readonly"      => "readonly",
+                                        "placeholder"   => "Enter Company Name",
                                         "class"         => "col-xs-10 col-sm-5 mandatory-field"
                                         );
 
                                         echo form_input($data);
                                     ?>
                                         <span class="help-inline col-xs-12 col-sm-7">
-                                                <span class="middle input-text-error" id="CurrencyDescription_errorlabel"></span>
+                                                <span class="middle input-text-error" id="CompanyName_errorlabel"></span>
                                         </span>
                                 </div>
                             </div>
                         
                             <div class="form-group">
-                                <label class="col-sm-2 no-padding-right" for="form-field-2"> User First Name*</label>
+                                <label class="col-sm-2 no-padding-right" for="form-field-2">Equivalent*</label>
 
                                 <div class="col-sm-9">
                                     <?php 
                                     $data = array(
-                                        'name'          => 'CurrencySign',
-                                        'id'            => 'CurrencySign',
-                                        'value'         => (!empty($currencydata[0])) ? $currencydata[0]->CurrencySign: '',
+                                        'name'          => 'Equivalent',
+                                        'id'            => 'Equivalent',
+                                        'value'         => (!empty($eqprofiledata[0])) ? $eqprofiledata[0]->Equivalent: '',
                                         'maxlength'     => '45',
-                                        "placeholder"   => "Currency Sign",
-                                        "readonly"      => "readonly",
+                                        "placeholder"   => "Equivalent",
                                         "class"         => "col-xs-10 col-sm-5 mandatory-field"
                                         );
 
                                         echo form_input($data);
                                     ?>
                                         <span class="help-inline col-xs-12 col-sm-7">
-                                                <span class="middle input-text-error" id="CurrencySign_errorlabel"></span>
-                                        </span>
-                                </div>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label class="col-sm-2 no-padding-right" for="form-field-2"> Round Value*</label>
-
-                                <div class="col-sm-9">
-                                    <?php 
-                                    $data = array(
-                                        'name'          => 'RoundValue',
-                                        'id'            => 'RoundValue',
-                                        'value'         => (!empty($currencydata[0])) ? $currencydata[0]->RoundValue: '',
-                                        'maxlength'     => '45',
-                                        "placeholder"   => "Enter Round Value",
-                                        "class"         => "col-xs-10 col-sm-5 mandatory-field"
-                                        );
-
-                                        echo form_input($data);
-                                    ?>
-                                        <span class="help-inline col-xs-12 col-sm-7">
-                                                <span class="middle input-text-error" id="RoundValue_errorlabel"></span>
-                                        </span>
-                                </div>
-                            </div>
-                        
-                            <div class="form-group">
-                                <label class="col-sm-2 no-padding-right" for="form-field-2"> Purchase Rate*</label>
-
-                                <div class="col-sm-9">
-                                    <?php 
-                                    $data = array(
-                                        'name'          => 'PurchaseRate',
-                                        'id'            => 'PurchaseRate',
-                                        'value'         => (!empty($currencydata[0])) ? $currencydata[0]->PurchaseRate: '',
-                                        'maxlength'     => '45',
-                                        "placeholder"   => "Enter Purchase Rate",
-                                        "class"         => "col-xs-10 col-sm-5 mandatory-field"
-                                        );
-
-                                        echo form_input($data);
-                                    ?>
-                                        <span class="help-inline col-xs-12 col-sm-7">
-                                                <span class="middle input-text-error" id="PurchaseRate_errorlabel"></span>
-                                        </span>
-                                </div>
-                            </div>
-                        
-                            <div class="form-group">
-                                <label class="col-sm-2 no-padding-right" for="form-field-2">Sales Rate*</label>
-
-                                <div class="col-sm-9">
-                                    <?php 
-                                    $data = array(
-                                        'name'          => 'SalesRate',
-                                        'id'            => 'SalesRate',
-                                        'value'         => (!empty($currencydata[0])) ? $currencydata[0]->SalesRate: '',
-                                        'maxlength'     => '45',
-                                        "placeholder"   => "Enter Sales Rate",
-                                        "class"         => "col-xs-10 col-sm-5 mandatory-field"
-                                        );
-
-                                        echo form_input($data);
-                                    ?>
-                                        <span class="help-inline col-xs-12 col-sm-7">
-                                                <span class="middle input-text-error" id="SalesRate_errorlabel"></span>
+                                                <span class="middle input-text-error" id="Equivalent_errorlabel"></span>
                                         </span>
                                 </div>
                             </div>

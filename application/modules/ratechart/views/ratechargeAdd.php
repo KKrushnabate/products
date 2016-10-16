@@ -4,13 +4,13 @@
             <ul class="breadcrumb">
                 <li>
                     <i class="ace-icon fa fa-home home-icon"></i>
-                    <a href="#">Home</a>
+                    <a href="<?php echo site_url();?>">Home</a>
                 </li>
 
                 <li>
-                    <a href="<?php echo site_url('/factor/index'); ?>">Factor</a>
+                    <a href="<?php echo site_url('/ratechart/index'); ?>">Rate Chart</a>
                 </li>
-                <li class="active">Add Factor</li>
+                <li class="active">Add Rate Chart</li>
             </ul><!-- /.breadcrumb -->
 
             <div class="nav-search" id="nav-search">
@@ -27,7 +27,7 @@
 
             <div class="page-header">
                 <h1>
-                    Add Factor
+                    Add Rate Chart
                 </h1>
             </div><!-- /.page-header -->
 
@@ -36,55 +36,101 @@
                     <div class="alert-box"></div>
                         <!-- PAGE CONTENT BEGINS -->
                             <?php
-                                $strFormId = "factormaster";
+                                $strFormId = "ratechart";
                                 $arrAttributers = array("class"=>"form-horizontal", "role"=>"form","id"=>$strFormId);
                                 echo form_open('',$arrAttributers); 
                             ?>
                         
                             <div class="form-group">
-                                <label class="col-sm-2 no-padding-right" for="form-field-2">OD from </label>
+                                <label class="col-sm-2 no-padding-right" for="form-field-2">RAte Sr No*</label>
+
                                 <div class="col-sm-9">
                                     <?php 
                                     $data = array(
-                                        'name'          => 'SrNo',
-                                        'id'            => 'SrNo',
+                                        'name'          => 'SRNo',
+                                        'id'            => 'SRNo',
                                         'type'            => 'hidden',
-                                        'value'         => (!empty($factordata[0])) ? $factordata[0]->SrNo: '',
+                                        'value'         => (!empty($ratechart[0])) ? $ratechart[0]->SRNo: '',
                                         );
 
                                     echo form_input($data);
-                                        
+                                    
                                     $data = array(
-                                        'name'          => 'ODFrom',
-                                        'id'            => 'ODFrom',
-                                        'value'         => (!empty($factordata[0])) ? $factordata[0]->ODFrom: '',
+                                        'name'          => 'RateSrNo',
+                                        'id'            => 'RateSrNo',
+                                        'value'         => (!empty($ratechart[0])) ? $ratechart[0]->RateSrNo: '',
                                         'maxlength'     => '45',
-                                        "placeholder"   => "Enter OD from ",
+                                        "placeholder"   => "Enter Chart Type",
                                         "class"         => "col-xs-10 col-sm-5 mandatory-field"
                                         );
 
-                                        echo form_input($data);
+                                    echo form_input($data);
+                                     
                                     ?>
                                         <span class="help-inline col-xs-12 col-sm-7">
-                                                <span class="middle input-text-error" id="ODFrom_errorlabel"></span>
+                                                <span class="middle input-text-error" id="RateSrNo_errorlabel"></span>
                                         </span>
                                 </div>
                             </div>
+										
+							<div class="form-group">
+                                <label class="col-sm-2 no-padding-right" for="form-field-2">Chart Type*</label>
+
+                                <div class="col-sm-9">
+                                    <?php 
                                         
+                                    $data = array(
+                                        'name'          => 'ChartType',
+                                        'id'            => 'ChartType',
+                                        'value'         => (!empty($ratechart[0])) ? $ratechart[0]->ChartType: '',
+                                        'maxlength'     => '45',
+                                        "placeholder"   => "Enter Chart Type",
+                                        "class"         => "col-xs-10 col-sm-5 mandatory-field"
+                                        );
+                                   
+                                        echo form_input($data);
+                                    ?>
+                                        <span class="help-inline col-xs-12 col-sm-7">
+                                                <span class="middle input-text-error" id="ChartType_errorlabel"></span>
+                                        </span>
+                                </div>
+                            </div>
+                            
                             <div class="form-group">
-                                <label class="col-sm-2 no-padding-right" for="form-field-2">ODTo*</label>
+                                <label class="col-sm-2 no-padding-right" for="form-field-2">Od From*</label>
+
+                                <div class="col-sm-9">
+                                    <?php 
+                                    $data = array(
+                                        'name'          => 'OdFrom',
+                                        'id'            => 'OdFrom',
+                                        'value'         => (!empty($ratechart[0])) ? $ratechart[0]->OdFrom: '',
+                                        'maxlength'     => '100',
+                                        "placeholder"   => "OdFrom",
+                                        "class"         => "col-xs-10 col-sm-5 mandatory-field"
+                                        );
+                                    
+                                        echo form_input($data);
+                                    ?>
+                                        <span class="help-inline col-xs-12 col-sm-7">
+                                                <span class="middle input-text-error" id="OdFrom_errorlabel"></span>
+                                        </span>
+                                </div>
+                            </div>
+                         
+                            <div class="form-group">
+                                <label class="col-sm-2 no-padding-right" for="form-field-2"> OD To*</label>
 
                                 <div class="col-sm-9">
                                     <?php 
                                     $data = array(
                                         'name'          => 'ODTo',
                                         'id'            => 'ODTo',
-                                        'value'         => (!empty($factordata[0])) ? $factordata[0]->ODTo: '',
-                                        'maxlength'     => '100',
+                                        'value'         => (!empty($ratechart[0])) ? $ratechart[0]->ODTo: '',
+                                        'maxlength'     => '45',
                                         "placeholder"   => "ODTo",
                                         "class"         => "col-xs-10 col-sm-5 mandatory-field"
                                         );
-
                                         echo form_input($data);
                                     ?>
                                         <span class="help-inline col-xs-12 col-sm-7">
@@ -92,18 +138,62 @@
                                         </span>
                                 </div>
                             </div>
+                            
+                            <div class="form-group">
+                                <label class="col-sm-2 no-padding-right" for="form-field-2"> Thk From*</label>
+
+                                <div class="col-sm-9">
+                                    <?php
+                                    $data = array(
+                                        'name'          => 'ThkFrom',
+                                        'id'            => 'ThkFrom',
+                                        'value'         => (!empty($ratechart[0])) ? $ratechart[0]->ThkFrom: '',
+                                        'maxlength'     => '45',
+                                        "placeholder"   => "Enter Thk From",
+                                        "class"         => "col-xs-10 col-sm-5 mandatory-field"
+                                        );
+
+                                        echo form_input($data);
+                                    ?>
+                                        <span class="help-inline col-xs-12 col-sm-7">
+                                                <span class="middle input-text-error" id="ThkFrom_errorlabel"></span>
+                                        </span>
+                                </div>
+                            </div>
                         
                             <div class="form-group">
-                                <label class="col-sm-2 no-padding-right" for="form-field-2"> Qty From*</label>
+                                <label class="col-sm-2 no-padding-right" for="form-field-2"> Thickness To*</label>
+
+                                <div class="col-sm-9">
+                                    <?php 
+                                    $data = array(
+                                        'name'          => 'ThkTo',
+                                        'id'            => 'ThkTo',
+                                        'value'         => (!empty($ratechart[0])) ? $ratechart[0]->ThkTo: '',
+                                        'maxlength'     => '45',
+                                        "placeholder"   => "Enter Thickness To",
+                                        "class"         => "col-xs-10 col-sm-5 mandatory-field"
+                                        );
+
+                                        echo form_input($data);
+                                    ?>
+                                        <span class="help-inline col-xs-12 col-sm-7">
+                                                <span class="middle input-text-error" id="ThkTo_errorlabel"></span>
+                                        </span>
+                                </div>
+                            </div>
+                        
+                            <div class="form-group">
+                                <label class="col-sm-2 no-padding-right" for="form-field-2">Qty From*</label>
 
                                 <div class="col-sm-9">
                                     <?php 
                                     $data = array(
                                         'name'          => 'QtyFrom',
                                         'id'            => 'QtyFrom',
-                                        'value'         => (!empty($factordata[0])) ? $factordata[0]->QtyFrom: '',
+                                        'value'         => (!empty($ratechart[0])) ? $ratechart[0]->QtyFrom: '',
                                         'maxlength'     => '45',
-                                        "placeholder"   => "Qty From",
+                                        "placeholder"   => "Enter Qty From",
                                         "class"         => "col-xs-10 col-sm-5 mandatory-field"
                                         );
 
@@ -114,18 +204,18 @@
                                         </span>
                                 </div>
                             </div>
-                            
+                        
                             <div class="form-group">
-                                <label class="col-sm-2 no-padding-right" for="form-field-2"> QtyTo*</label>
+                                <label class="col-sm-2 no-padding-right" for="form-field-2">Qty To*</label>
 
                                 <div class="col-sm-9">
                                     <?php 
                                     $data = array(
                                         'name'          => 'QtyTo',
                                         'id'            => 'QtyTo',
-                                        'value'         => (!empty($factordata[0])) ? $factordata[0]->QtyTo: '',
+                                        'value'         => (!empty($ratechart[0])) ? $ratechart[0]->QtyTo: '',
                                         'maxlength'     => '45',
-                                        "placeholder"   => "Enter QtyTo",
+                                        "placeholder"   => "Enter Qty To",
                                         "class"         => "col-xs-10 col-sm-5 mandatory-field"
                                         );
 
@@ -138,27 +228,48 @@
                             </div>
                         
                             <div class="form-group">
-                                <label class="col-sm-2 no-padding-right" for="form-field-2"> Factor*</label>
+                                <label class="col-sm-2 no-padding-right" for="form-field-2">Old Die*</label>
 
                                 <div class="col-sm-9">
                                     <?php 
                                     $data = array(
-                                        'name'          => 'Factor',
-                                        'id'            => 'Factor',
-                                        'value'         => (!empty($factordata[0])) ? $factordata[0]->Factor: '',
+                                        'name'          => 'OldDie',
+                                        'id'            => 'OldDie',
+                                        'value'         => (!empty($ratechart[0])) ? $ratechart[0]->OldDie: '',
                                         'maxlength'     => '45',
-                                        "placeholder"   => "Enter Factor",
+                                        "placeholder"   => "Enter Old Die",
                                         "class"         => "col-xs-10 col-sm-5 mandatory-field"
                                         );
 
                                         echo form_input($data);
                                     ?>
                                         <span class="help-inline col-xs-12 col-sm-7">
-                                                <span class="middle input-text-error" id="Factor_errorlabel"></span>
+                                                <span class="middle input-text-error" id="OldDie_errorlabel"></span>
                                         </span>
                                 </div>
                             </div>
-                        
+                            
+                            <div class="form-group">
+                                <label class="col-sm-2 no-padding-right" for="form-field-2">New Die*</label>
+
+                                <div class="col-sm-9">
+                                    <?php 
+                                    $data = array(
+                                        'name'          => 'NewDie',
+                                        'id'            => 'NewDie',
+                                        'value'         => (!empty($ratechart[0])) ? $ratechart[0]->NewDie: '',
+                                        'maxlength'     => '45',
+                                        "placeholder"   => "Enter New Die",
+                                        "class"         => "col-xs-10 col-sm-5 mandatory-field"
+                                        );
+
+                                        echo form_input($data);
+                                    ?>
+                                        <span class="help-inline col-xs-12 col-sm-7">
+                                                <span class="middle input-text-error" id="NewDie_errorlabel"></span>
+                                        </span>
+                                </div>
+                            </div>
                             <div class="clearfix form-actions">
                                     <div class="col-md-offset-3 col-md-9">
                                             <button class="btn btn-info test" type="submit">
