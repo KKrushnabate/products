@@ -419,7 +419,7 @@ $(document).ready(function () {
                 }
                     
                     
-                if ($.trim(obj_mand.eq(index).val()) == "" || $.trim(obj_mand.eq(index).val()) == "0") 
+                if ($.trim(obj_mand.eq(index).val()) == "") 
                 {
                     fields_nf = obj_mand.eq(index).attr("id");
                     var data = $('#'+fields_nf).val();
