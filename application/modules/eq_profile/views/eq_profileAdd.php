@@ -44,7 +44,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 no-padding-right" for="form-field-2"> Profile*</label>
 
-                                <div class="col-sm-9">
+                                <div class="col-sm-4">
                                     <?php 
                                     $data = array(
                                         'name'          => 'id',
@@ -56,7 +56,7 @@
                                     echo form_input($data);
                                     
                                     $selected=(!empty($eqprofiledata[0])? $eqprofiledata[0]->ProfileID."-".$eqprofiledata[0]->Profile: '');
-                                        echo form_dropdown('ProfileID',$profilelist,$selected,array("class" => "chosen-select  col-xs-4 col-sm-5"));
+                                        echo form_dropdown('ProfileID',$profilelist,$selected,array("class" => "chosen-select "));
                                     ?>
                                         <span class="help-inline col-xs-12 col-sm-7">
                                                 <span class="middle input-text-error" id="ProfileID_errorlabel"></span>
